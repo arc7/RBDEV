@@ -2,19 +2,19 @@
 <widget xmlns = 'http://www.w3.org/ns/widgets'
         xmlns:gap = 'http://phonegap.com/ns/1.0'
         id = "com.cerivan.rb"
-        version = "0.0.4">
+        version = "0.1.4">
 	
     <name>RestauBook</name>
 
     <description>
-        Test contacts
+        Test contacts v1
     </description>
 
     <author href="http://www.cerivan.com" email="mail@cerivan.com">
         Cerivan
     </author>
     
-    <icon src="drawable/icon.png" width="48" height="48"/>
+    <icon src="splash/image/icon.png" width="48" height="48"/>
     
     <preference name="permissions" value="none"/>
 
@@ -34,8 +34,8 @@
      <preference name="auto-hide-splash-screen" value="false" />
      <preference name="load-url-timeout" value="30000" />
 
-    <gap:splash src="splash.png" />
-    <gap:splash src="splash/winphone/splash.jpg" gap:platform="winphone" />
+    
+    <gap:splash src="splash/image/splash.jpg" />
 	<gap:plugin name="org.apache.cordova.core.console" /> 
 	<gap:plugin name="org.apache.cordova.core.contacts" /> 
 	<gap:plugin name="org.apache.cordova.core.device" /> 
