@@ -1,6 +1,4 @@
- document.addEventListener("deviceready", onDeviceReady, false);
 
-    // PhoneGap est prêt
     //
     function getContacts() {
         var options = new ContactFindOptions();
@@ -14,9 +12,10 @@
     //
     function onSuccess(contacts) {
 		var elements = document.getElementById('contacts');
+		elements.innerHTML = elements.innerHTML + ' Nombre contacts : ' + contacts.length + '<br>';
         for (var i=0; i<contacts.length; i++) {
 		elements.innerHTML = elements.innerHTML + ' ID : ' + contacts[i].id + '<br>';
-		elements.innerHTML = elements.innerHTML + 'Name : ' + contacts[i].name.formatted +'<br>';
+		elements.innerHTML = elements.innerHTML + 'Name : ' + contacts[i].name +'<br>';
 				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
 						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
 							elements.innerHTML = elements.innerHTML + 'Phone : ' + contacts[i].phoneNumbers[j].value +'<br>';
@@ -34,7 +33,7 @@
     function onError(contactError) {
         alert('onError!');
     }
-	var deviceready = function() {
+	var deviceinfo = function() {
    
     document.getElementById("uuid").innerHTML = device.uuid;
     
