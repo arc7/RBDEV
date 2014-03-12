@@ -1,6 +1,6 @@
 
-    //
-/*     function getContacts() {
+    
+    function getContacts() {
         var options = new ContactFindOptions();
         options.filter="";
 		options.multiple=true;
@@ -27,8 +27,8 @@
 						}
 					}
 		}
-	}; */
-	function getContacts() {
+	};
+/* 	function getContacts() {
         // Spécifier des critères de recherche de contacts
         var options = new ContactFindOptions();
         options.filter="";          // une chaine vide permet de retrouver tous les contacts
@@ -56,7 +56,7 @@
     //
     function onError(contactError) {
         alert('onError!');
-    }
+    } */
 	var deviceinfo = function() {
    
     document.getElementById("uuid").innerHTML = device.uuid;
