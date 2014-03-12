@@ -15,7 +15,7 @@
         for (var i=0; i<contacts.length; i++) {
             alert("Nom complet : " + contacts[i].name.formatted + "\n" + 
                     "Nom de famille : "  + contacts[i].name.familyName + "\n" + 
-                    "Prénom : "  + contacts[i].name.givenName; 
+                    "Prénom : "  + contacts[i].name.givenName);
         }
     };
 
