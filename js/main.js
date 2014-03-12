@@ -6,7 +6,7 @@
         var options = new ContactFindOptions();
         options.filter="";
         filter = ["displayName","name", "phoneNumbers", "emails"];
-		multiple: true;
+		options.multiple: true;
         navigator.contacts.find(filter, onSuccess, onError, options);
     }
 
