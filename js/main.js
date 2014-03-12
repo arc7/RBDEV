@@ -2,11 +2,11 @@
 
     // PhoneGap est prêt
     //
-    function onDeviceReady() {
+    function getContacts() {
         var options = new ContactFindOptions();
         options.filter="";
         filter = ["displayName","name", "phoneNumbers", "emails"];
-		options.multiple: true;
+		multiple: true;
         navigator.contacts.find(filter, onSuccess, onError, options);
     }
 
@@ -34,7 +34,7 @@
     function onError(contactError) {
         alert('onError!');
     }
-	var deviceInfo = function() {
+	var deviceready = function() {
    
     document.getElementById("uuid").innerHTML = device.uuid;
     
