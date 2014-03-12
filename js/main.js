@@ -2,7 +2,7 @@
     //
     function getContacts() {
         var options = new ContactFindOptions();
-        options.filter="";
+        /* options.filter=""; */
         filter = ["displayName","name", "phoneNumbers", "emails"];
 		multiple: true;
         navigator.contacts.find(filter, onSuccess, onError, options);
