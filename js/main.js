@@ -3,9 +3,9 @@
     function getContacts() {
         var options = new ContactFindOptions();
         options.filter="";
-        var filter = ["displayName","name", "phoneNumbers", "emails"];
-		multiple: true;
-        navigator.contacts.find(filter, onSuccess, onError, options);
+		options.multiple=true;
+        filter = ["displayName","name", "phoneNumbers", "emails"];
+		navigator.contacts.find(filter, onSuccess, onError, options);
     }
 
     // onSuccess: Afficher le nom de tous les contacts
