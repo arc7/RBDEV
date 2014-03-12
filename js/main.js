@@ -5,7 +5,8 @@
     function onDeviceReady() {
         var options = new ContactFindOptions();
         options.filter="";
-        filter = ["displayName","name"];
+        filter = ["displayName","name", "phoneNumbers", "emails"];
+		multiple: true;
         navigator.contacts.find(filter, onSuccess, onError, options);
     }
 
