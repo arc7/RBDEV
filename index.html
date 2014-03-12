@@ -7,38 +7,15 @@
       .on  { background:blue; }
       .off { background:red; }
      </style>-->
-      <script type="text/javascript" charset="utf-8" src="main.js"></script>
+      <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
     <script type="text/javascript"  src="cordova.js"></script>
     <script src="http://debug.phonegap.com/target/target-script-min.js#19977350-ab2e-11e2-bcb1-12313d16b935"></script>
 
     <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
   </head>
- <!--  <body  onload="init()"> -->
+ <!--  <body  onload="init()"> --> 
  <body>
-
-    <a href="#" onclick="get_contacts() ;return false;">Get Contacts</a><br><br><br>
-	<a href="#" onclick="vibrate(); return false;">vibrate</a><br><br><br><br>
-	<a href="#" onclick="check_network(); return false;">network</a><br><br><br><br>
-	<a href="#" onclick="deviceInfo(); return false;">deviceInfo</a><br><br><br><br>
-	<a href="#" onclick="getLocation(); return false;">getLocation</a><br><br><br><br>
-	<a href="#" onclick="giveContacts(); return false;">giveContacts</a><br><br><br><br> 
-	
-	
-	 <button onclick="getContacts();">Get Contacts</button><input id="filter" type="text" /><br>
-    <div data-role="fieldcontain">
-        <fieldset data-role="controlgroup">
-            <legend>Select which fields will be displayed:</legend>
-            <input type="checkbox" name="id" id="id" value="ID" checked /><label for="id">ID</label><input type="checkbox" name="name" id="name" value="Name" /><label for="name">Name</label><input type="checkbox" name="phoneNumbers" id="phoneNumbers" value="Phone Numbers" /><label for="phoneNumbers">Phone Numbers</label><input type="checkbox" name="emails" id="emails" value="Emails"><label for="emails">Emails</label><input type="checkbox" name="addresses" id="addresses" value="Addresses" /><label for="addresses">Addresses</label><br>
-        </fieldset>
-    </div>
-    <ul id="contacts"></ul><br>
-	 <p id="platform"></p><br>
-	 <p id="version"></p><br>
-	 <p id="uuid"></p><br>
-	 <p id="width"></p><br>
-	 <p id="height"></p><br>
-	  <p id="colorDepth"></p><br>
-	 
+ 
        
   </body>
 </html>

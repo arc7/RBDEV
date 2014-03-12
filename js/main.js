@@ -5,7 +5,7 @@
     function onDeviceReady() {
         // Rechercher tous les contacts qui ont 'Bob' dans l'un de leurs champs de nom
         var options = new ContactFindOptions();
-        options.filter="Bob"; 
+        options.filter=""; 
         var fields = ["displayName", "name"];
         navigator.contacts.find(fields, onSuccess, onError, options);
     }
@@ -14,7 +14,7 @@
     //
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
-            console.log("Nom d'affichage = " + contacts[i].displayName);
+            alert("Nom  = " + contacts[i].displayName);
         }
     }
 
