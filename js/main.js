@@ -28,35 +28,10 @@
 					}
 		}
 	};
-/* 	function getContacts() {
-        // Spécifier des critères de recherche de contacts
-        var options = new ContactFindOptions();
-        options.filter="";          // une chaine vide permet de retrouver tous les contacts
-        options.multiple=true;      // on veut que plusieurs résultats soient retournés
-        filter = ["displayName"];   // on veut obtenir uniquement l'attribut contact.displayName des résultats
 
-        // Lancer la recherche des contacts
-        navigator.contacts.find(filter, onSuccess, onError, options);
-    }
-
-    // onSuccess: Afficher les noms de tous les contacts trouvés
-    //
-    function onSuccess(contacts) {
-        for (var i=0; i<contacts.length; i++) {
-            alert(contacts[i].displayName);
-        }
-    };
-
-    // onError: Echec de récupération des contacts
-    //
     function onError(contactError) {
         alert('onError!');
-    }
-    // onError: Echec de récupération des contacts
-    //
-    function onError(contactError) {
-        alert('onError!');
-    } */
+    
 	var deviceinfo = function() {
    
     document.getElementById("uuid").innerHTML = device.uuid;
