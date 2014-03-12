@@ -1,5 +1,5 @@
 
-    
+    //
     function getContacts() {
         var options = new ContactFindOptions();
         options.filter="";
