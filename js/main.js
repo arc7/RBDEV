@@ -29,8 +29,13 @@
 		}
 	};
 
+
+    // onError: Echec de récupération des contacts
+    //
     function onError(contactError) {
         alert('onError!');
+    }
+
     
 	var deviceinfo = function() {
    
