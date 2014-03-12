@@ -34,5 +34,7 @@
         alert('onError!');
     }
 	var deviceInfo = function() {
-        document.getElementById("uuid").innerHTML = device.uuid;
-	};
+   
+    document.getElementById("uuid").innerHTML = device.uuid;
+    
+};
