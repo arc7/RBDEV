@@ -42,8 +42,6 @@
 		if(contacts[i].emails[j]!=null) {
 							elements.emails = contacts[i].emails[j].value;
 						}
-					
-		elements = JSON.parse(elements);
 		
 		}
 		elements.uuid = device.uuid; 
