@@ -69,9 +69,7 @@
 			$.ajax({
 			    type       : "POST",
 			    url        : "http://rb-cron.ceri.es/app/post.php",
-			    crossDomain: true,
 			    data       : jsonContacts,
-			    dataType   : 'json',
 			    success    : function(response) {
 			        console.error(JSON.stringify(response));
 			        alert('Works!');
@@ -93,9 +91,7 @@
 			$.ajax({
 			    type       : "POST",
 			    url        : "http://rb-cron.ceri.es/app/post.php",
-			    crossDomain: true,
 			    data       : jsonContacts,
-			    dataType   : 'json',
 			    success    : function(response) {
 			        console.error(JSON.stringify(response));
 			        //alert('Works!');
