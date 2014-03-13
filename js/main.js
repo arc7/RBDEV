@@ -50,7 +50,7 @@
 		jsonContacts = JSON.stringify(elements);
 	    alert(jsonContacts); 
 		}	        
-			/* $.ajax({
+			$.ajax({
 			    type       : "POST",
 			    url        : "http://rb-cron.ceri.es/app/post.php",
 			    data       : jsonContacts,
@@ -63,7 +63,7 @@
 			        console.error("Erreur");
 			        console.log('Not working!');                  
 			    }
-			});  */
+			}); 
 
 	};
 	
