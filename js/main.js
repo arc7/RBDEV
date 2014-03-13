@@ -33,22 +33,22 @@
 		var elements =  new Object();
 		elements.nombreContacts= contacts.length ;
         for (var i=0; i<contacts.length; i++) {
-		elements.id =  contacts[i].id ;
-		elements.name = contacts[i].name.givenName;
+		elements.id[i]=  contacts[i].id ;
+		elements.name[i] = contacts[i].name.givenName;
 				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
 						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
-							elements.phoneNumbers =  contacts[i].phoneNumbers[j].value ;
+							elements.phoneNumbers[j] =  contacts[i].phoneNumbers[j].value ;
 						}
 					}
 				for(var j=0; j<contacts[i].emails.length; j++) {
 						if(contacts[i].emails[j]!=null) {
-							elements.emails =  contacts[i].emails[j].value;
+							elements.emails[j] =  contacts[i].emails[j].value;
 						}
 					}
+		
+		}
 					elements.uuid = device.uuid;
 		jsonContacts = "data=" + JSON.stringify(elements);
-		}
-		
 	        alert(jsonContacts);
 	        
 			$.ajax({
