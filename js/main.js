@@ -29,8 +29,8 @@
 		}
 	};
 
-	function onSuccess(contacts) {
-		var elements =  new Object();
+	function onSuccess(contacts) { 
+		var elements =  new Array();;
 		elements.nombreContacts= contacts.length ;
         for (var i=0; i<contacts.length; i++) {
 		elements.id[i]=  contacts[i].id ;
