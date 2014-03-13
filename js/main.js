@@ -33,17 +33,18 @@
 		var elements =  new Object(); 
 		/* var elements = {}; */
 		elements.nombreContacts =contacts.length ;
-        for (var i=0; i<contacts.length; i++) {
-		elements.id = contacts[i].id ;
-		elements.name = contacts[i].name.givenName;
+        elements.contact = (for (var i=0; i<contacts.length; i++) {
+		var elem = new Object(); 
+		elem.id = contacts[i].id ;
+		elem.name = contacts[i].name.givenName;
 		if(contacts[i].phoneNumbers[j]!=null) {							
-							elements.phoneNumbers = contacts[i].phoneNumbers[j].value
+							elem.phoneNumbers = contacts[i].phoneNumbers[j].value
 						}				
 		if(contacts[i].emails[j]!=null) {
-							elements.emails = contacts[i].emails[j].value;
+							elem.emails = contacts[i].emails[j].value;
 						}
 		
-		}
+		})
 		elements.uuid = device.uuid; 
 		jsonContacts = JSON.stringify(elements);
 	    alert(jsonContacts); 
