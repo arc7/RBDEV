@@ -43,5 +43,7 @@
 	<gap:plugin name="org.apache.cordova.core.dialogs" /> 
 	<gap:plugin name="org.apache.cordova.core.network-information" /> 
 	<gap:plugin name="org.apache.cordova.core.vibration" />
+	<gap:plugin name="org.apache.cordova.core.file" />
+	<gap:plugin name="org.apache.cordova.core.file-transfer" />
 	
 </widget>
