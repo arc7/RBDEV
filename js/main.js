@@ -36,22 +36,17 @@
         for (var i=0; i<contacts.length; i++) {
 		elements.id = contacts[i].id ;
 		elements.name = contacts[i].name.givenName;
-				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
-						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
-							
+		if(contacts[i].phoneNumbers[j]!=null) {							
 							elements.phoneNumbers = contacts[i].phoneNumbers[j].value
-						}
-					}
-				for(var j=0; j<contacts[i].emails.length; j++) {
-						if(contacts[i].emails[j]!=null) {
+						}				
+		if(contacts[i].emails[j]!=null) {
 							elements.emails = contacts[i].emails[j].value;
 						}
-					}
-			jsonContacts = "data=" + JSON.stringify(elements);
+					
+			jsonContacts += "data=" + JSON.stringify(elements);
 		
 		}
-		elements.uuid = device.uuid;
-		
+		elements.uuid = device.uuid;		
 	    alert(jsonContacts); 
 		
 	        
