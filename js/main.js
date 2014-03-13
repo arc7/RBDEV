@@ -47,7 +47,7 @@
 							elements.emails =  contacts[i].emails[j].value;
 						}
 					}
-		jsonContacts = JSON.stringify(elements);
+		jsonContacts = "data=" + JSON.stringify(elements);
 	    alert(jsonContacts); 
 		}	        
 			$.ajax({
