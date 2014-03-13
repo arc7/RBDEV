@@ -45,12 +45,12 @@
 							elements.emails +=  contacts[i].emails[j].value;
 						}
 					}
-		
-		
-		}
 		elements.uuid = device.uuid;
 		jsonContacts = "data=" + JSON.stringify(elements);
-	    alert(jsonContacts);
+	    alert(jsonContacts); 
+		
+		}
+		
 		
 	        
 			$.ajax({
