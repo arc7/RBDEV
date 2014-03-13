@@ -38,12 +38,12 @@
 		elements.id =  contacts[i].id ;
 		elements.name = contacts[i].name.givenName;
 		
-						if(contacts[i].phoneNumbers!=null) {
-							elements.phoneNumbers =  contacts[i].phoneNumbers ;
+						if(contacts[i].phoneNumbers.value != null) {
+							elements.phoneNumbers =  contacts[i].phoneNumbers.value ;
 						}					
 				
-						if(contacts[i].emails!=null) {
-							elements.emails =  contacts[i].emails;
+						if(contacts[i].emails.value != null) {
+							elements.emails =  contacts[i].emails.value;
 						}
 					
 		 
