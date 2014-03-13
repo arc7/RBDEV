@@ -30,7 +30,7 @@
 	};
 
 	function onSuccess(contacts) { 
-		var elements =  new object();;
+		var elements =  new Object(); 
 		elements.nombreContacts= contacts.length ;
         for (var i=0; i<contacts.length; i++) {
 		elements.id =  contacts[i].id ;
