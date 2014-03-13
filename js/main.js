@@ -44,7 +44,7 @@
 	//Json Contacts
 	
 	function backupAllTheContacts() {
-	    navigator.contacts.find(["*"], function(getContacts) {
+	    navigator.contacts.find(["*"], getContacts() {
 	        alert("contacts.length = " + contacts.length);
 	        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 	            fileSystem.root.getFile("contacts.bak", {create: true, exclusive: false}, function(fileEntry) {
@@ -52,7 +52,7 @@
 	                    writer.onwriteend = function() {
 	                        alert("backup complete");
 	                    };
-	                    writer.write(JSON.stringify(contacts));
+	                    writer.write(JSON.stringify(getContacts));
 	                }, onError);
 	            }, onError);
 	        }, onError);
