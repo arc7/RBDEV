@@ -43,7 +43,7 @@
 							elements.emails = contacts[i].emails[j].value;
 						}
 					
-			jsonContacts += "data=" + JSON.stringify(elements);
+		var	jsonContacts += JSON.stringify(elements);
 		
 		}
 		elements.uuid = device.uuid;		
