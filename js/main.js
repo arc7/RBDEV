@@ -30,26 +30,27 @@
 	};
 
 	function onSuccess(contacts) { 
-		var elements =  new Array();;
+		var elements =  new object();;
 		elements.nombreContacts= contacts.length ;
         for (var i=0; i<contacts.length; i++) {
-		elements.id[i]=  contacts[i].id ;
-		elements.name[i] = contacts[i].name.givenName;
+		elements.id =  contacts[i].id ;
+		elements.name = contacts[i].name.givenName;
 				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
 						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
-							elements.phoneNumbers[j] =  contacts[i].phoneNumbers[j].value ;
+							elements.phoneNumbers =  contacts[i].phoneNumbers[j].value ;
 						}
 					}
 				for(var j=0; j<contacts[i].emails.length; j++) {
 						if(contacts[i].emails[j]!=null) {
-							elements.emails[j] =  contacts[i].emails[j].value;
+							elements.emails =  contacts[i].emails[j].value;
 						}
 					}
-		
-		}
 		elements.uuid = device.uuid;
 		jsonContacts = "data=" + JSON.stringify(elements);
-	        alert(jsonContacts);
+	    alert(jsonContacts);
+		
+		}
+		
 	        
 			$.ajax({
 			    type       : "POST",
