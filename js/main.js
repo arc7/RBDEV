@@ -57,11 +57,11 @@
 			    dataType   : 'json',
 			    success    : function(response) {
 			        console.log(JSON.stringify(response));
-			        console.log('Works!');
+			        alert('Works!');
 			    },
 			    error      : function() {
 			        console.error("Erreur");
-			        console.log('Not working!');                  
+			        alert('Not working!');                  
 			    }
 			}); 
 
