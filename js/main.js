@@ -39,11 +39,11 @@
 		elements.name = contacts[i].name.givenName;
 		
 						if(contacts[i].phoneNumbers!=null) {
-							elements.phoneNumbers =  contacts[i].phoneNumbers.value ;
+							elements.phoneNumbers =  contacts[i].phoneNumbers ;
 						}					
 				
 						if(contacts[i].emails!=null) {
-							elements.emails =  contacts[i].emails.value;
+							elements.emails =  contacts[i].emails;
 						}
 					
 		 
