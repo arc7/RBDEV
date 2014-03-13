@@ -37,8 +37,24 @@
     }
 
     
-	var deviceinfo = function() {
-   
-    document.getElementById("uuid").innerHTML = device.uuid;
-    
-};
+	var deviceinfo = function() {   
+		document.getElementById("uuid").innerHTML = device.uuid;
+		};
+		
+	//Json Contacts
+	
+	function backupAllTheContacts() {
+    navigator.contacts.find(["*"], function(contacts) {
+        alert("contacts.length = " + contacts.length);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+            fileSystem.root.getFile("contacts.bak", {create: true, exclusive: false}, function(fileEntry) {
+                fileEntry.createWriter(function(writer) {
+                    writer.onwriteend = function() {
+                        alert("backup complete");
+                    };
+                    writer.write(JSON.stringify(contacts));
+                }, onError);
+            }, onError);
+        }, onError);
+    }, onError, {"multiple": true});    
+}
