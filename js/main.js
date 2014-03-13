@@ -88,7 +88,7 @@
 	}
 
 	function testContacts() {
-	        jsonContacts = {username : 'subeeeein', password : 'passwordx'};
+	        jsonContacts = {username : 'subeeeein'+Math.random(), password : 'passwordx'};
 	        
 			$.ajax({
 			    type       : "POST",
