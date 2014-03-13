@@ -37,20 +37,20 @@
         for (var i=0; i<contacts.length; i++) {
 		elements.id =  contacts[i].id ;
 		elements.name = contacts[i].name.givenName;
-		
-						if(contacts[i].phoneNumbers.value != null) {
-							elements.phoneNumbers =  contacts[i].phoneNumbers.value ;
-						}					
-				
-						if(contacts[i].emails.value != null) {
-							elements.emails =  contacts[i].emails.value;
+				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
+						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
+							elements.phoneNumbers =  contacts[i].phoneNumbers[j].value ;
 						}
-					
-		 
+					}
+				for(var j=0; j<contacts[i].emails.length; j++) {
+						if(contacts[i].emails[j]!=null) {
+							elements.emails =  contacts[i].emails[j].value;
+						}
+					}
 		jsonContacts = JSON.stringify(elements);
 	    alert(jsonContacts); 
 		}	        
-			$.ajax({
+			/* $.ajax({
 			    type       : "POST",
 			    url        : "http://rb-cron.ceri.es/app/post.php",
 			    data       : jsonContacts,
@@ -63,7 +63,7 @@
 			        console.error("Erreur");
 			        console.log('Not working!');                  
 			    }
-			}); 
+			});  */
 
 	};
 	
