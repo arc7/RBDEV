@@ -64,6 +64,7 @@
 	    navigator.contacts.find(["*"], function(contacts) {
 	        alert("contacts.length = " + contacts.length);
 	        jsonContacts = JSON.stringify(contacts);
+	        alert(jsonContacts);
 	        
 			$.ajax({
 			    type       : "POST",
