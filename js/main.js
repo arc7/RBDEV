@@ -47,7 +47,7 @@
 					}
 		
 		}
-					elements.uuid = device.uuid;
+		elements.uuid = device.uuid;
 		jsonContacts = "data=" + JSON.stringify(elements);
 	        alert(jsonContacts);
 	        
