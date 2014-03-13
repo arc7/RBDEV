@@ -47,11 +47,11 @@
 							elements.emails = contacts[i].emails[j].value;
 						}
 					}
-			elements += elements
+			jsonContacts = "data=" + JSON.stringify(elements);
 		
 		}
 		elements.uuid = device.uuid;
-		jsonContacts = "data=" + JSON.stringify(elements);
+		
 	    alert(jsonContacts); 
 		
 	        
