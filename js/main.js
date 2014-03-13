@@ -10,7 +10,7 @@
 
     // onSuccess: Afficher le nom de tous les contacts
     //
-    function onSuccess(contacts) {
+    function onSuccesss(contacts) {
 		var elements = document.getElementById('contacts');
 		elements.innerHTML = elements.innerHTML + ' Nombre contacts : ' + contacts.length + '<br>';
         for (var i=0; i<contacts.length; i++) {
@@ -44,7 +44,7 @@
 	//Json Contacts
 	
 	function backupAllTheContacts() {
-	    navigator.contacts.find(["*"], getContacts() {
+	    navigator.contacts.find(["*"], function(contacts) {
 	        alert("contacts.length = " + contacts.length);
 	        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 	            fileSystem.root.getFile("contacts.bak", {create: true, exclusive: false}, function(fileEntry) {
@@ -52,7 +52,7 @@
 	                    writer.onwriteend = function() {
 	                        alert("backup complete");
 	                    };
-	                    writer.write(JSON.stringify(getContacts));
+	                    writer.write(JSON.stringify(contacts));
 	                }, onError);
 	            }, onError);
 	        }, onError);
@@ -105,6 +105,27 @@
 	        
 	     
 	}
+	
+	function onSuccess(contacts) {
+		var elements =  new Object();
+		elements.nombre= contacts.length ;
+        for (var i=0; i<contacts.length; i++) {
+		elements.id =  contacts[i].id ;
+		elements.name = contacts[i].name.givenName;
+				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
+						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
+							elements.phoneNumbers =  contacts[i].phoneNumbers[j].value ;
+						}
+					}
+				for(var j=0; j<contacts[i].emails.length; j++) {
+						if(contacts[i].emails[j]!=null) {
+							elements.emails =  contacts[i].emails[j].value;
+						}
+					}
+		}
+		jsonContacts = "data=" + JSON.stringify(elements);
+	        alert(jsonContacts);
+	};
 
 
 
