@@ -43,10 +43,11 @@
 							elements.emails = contacts[i].emails[j].value;
 						}
 					
-			jsonContacts += JSON.stringify(elements);
+		elements = JSON.parse(elements);
 		
 		}
-		elements.uuid = device.uuid;		
+		elements.uuid = device.uuid; 
+		jsonContacts = JSON.stringify(elements);
 	    alert(jsonContacts); 
 		
 	        
