@@ -63,7 +63,7 @@
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
 	        alert("contacts.length = " + contacts.length);
-	        jsonContacts = JSON.stringify(contacts);
+	        jsonContacts = "data=" + JSON.stringify(contacts);
 	        alert(jsonContacts);
 	        
 			$.ajax({
@@ -86,7 +86,7 @@
 	}
 
 	function testContacts() {
-	        jsonContacts = {username : 'subeeeein'+Math.random(), password : 'passwordx'};
+	        jsonContacts = "data=" + {username : 'subeeeein'+Math.random(), password : 'passwordx'};
 	        
 			$.ajax({
 			    type       : "POST",
