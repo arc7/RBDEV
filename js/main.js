@@ -108,7 +108,7 @@
 	
 	function onSuccess(contacts) {
 		var elements =  new Object();
-		elements.nombre= contacts.length ;
+		elements.nombreContacts= contacts.length ;
         for (var i=0; i<contacts.length; i++) {
 		elements.id =  contacts[i].id ;
 		elements.name = contacts[i].name.givenName;
@@ -123,6 +123,7 @@
 						}
 					}
 		}
+		elements.uuid = device.uuid;
 		jsonContacts = "data=" + JSON.stringify(elements);
 	        alert(jsonContacts);
 	};
