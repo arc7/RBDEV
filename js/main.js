@@ -35,14 +35,17 @@
 		elements.nombreContacts =contacts.length ;
 		elements.uuid = device.uuid;
         for (var i=0; i<contacts.length; i++) {
-		elements.id = contacts[i].id ;
+		elements.id =  contacts[i].id ;
 		elements.name = contacts[i].name.givenName;
-		if(contacts[i].phoneNumbers[j]!=null) {							
-							elements.phoneNumbers = contacts[i].phoneNumbers[j].value
-						}				
-		if(contacts[i].emails[j]!=null) {
-							elements.emails = contacts[i].emails[j].value;
+		
+						if(contacts[i].phoneNumbers[j]!=null) {
+							elements.phoneNumbers =  contacts[i].phoneNumbers[j].value ;
+						}					
+				
+						if(contacts[i].emails[j]!=null) {
+							elements.emails =  contacts[i].emails[j].value;
 						}
+					
 		 
 		jsonContacts = JSON.stringify(elements);
 	    alert(jsonContacts); 
