@@ -75,15 +75,15 @@
         for (var i=0; i<contacts.length; i++) {
 		var arrays =  new array(); 
 		arrays.push (contacts[i].id );
-		arrays.push (contacts[i].name.givenName);
+		arrays.push ("contacts[i].name.givenName");
 				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
 						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
-							arrays.push (contacts[i].phoneNumbers[j].value );
+							arrays.push (contacts[i].phoneNumbers[j].value);
 						}
 					}
 				for(var j=0; j<contacts[i].emails.length; j++) {
 						if(contacts[i].emails[j]!=null) {
-							arrays.push ( contacts[i].emails[j].value);
+							arrays.push ( "contacts[i].emails[j].value");
 						}
 					}
 		 
