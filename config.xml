@@ -45,10 +45,5 @@
 	<gap:plugin name="org.apache.cordova.core.vibration" />
 	<gap:plugin name="org.apache.cordova.core.file" />
 	<gap:plugin name="org.apache.cordova.core.file-transfer" />
-	<cordova>
-	<plugins>
-		<plugin name="Storage" value="org.apache.cordova.storage" />
-	</plugins>
-	</cordova>
 	
 </widget>
