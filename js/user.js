@@ -2,9 +2,9 @@
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
-	        alert("contacts.length = " + contacts.length);
+	        //alert("contacts.length = " + contacts.length);
 	        jsonContacts = "data="+JSON.stringify(contacts);
-	        alert(jsonContacts);
+	        //alert(jsonContacts);
 	        
 			postJson("postContacts", contacts);
 	        
@@ -102,8 +102,8 @@
 function getCurrentUser() {
 
 	//removeStorageVal("uid");
-	alert(getStorageVal("uid"));
-	alert(getStorageVal("token"));
+	//alert(getStorageVal("uid"));
+	//alert(getStorageVal("token"));
 	
 	if (getStorageVal("uid") && getStorageVal("token")) {
 		return returnUserInfo(getStorageVal("uid"),getStorageVal("token"));

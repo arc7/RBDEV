@@ -26,7 +26,7 @@ function postJson(action, obj, callback, needUserData) {
 	
 	
     jsonTosend = "data="+$.toJSON(obj);
-    alert(jsonTosend);
+    //alert(jsonTosend);
     console.log("http://rb-cron.ceri.es/app/call/post.php?g=yes&"+jsonTosend);
     
 	$.ajax({
