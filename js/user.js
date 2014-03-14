@@ -137,12 +137,15 @@ function returnUserInfo(uid, token) {
 }
 
 
-myUser = getCurrentUser();
-console.log(myUser);
+//myUser = getCurrentUser();
+//console.log(myUser);
+alert(getStorageVal("uid"));
+alert(getStorageVal("token"));
 
-jsonContacts = [{"id":"1","rawId":"1","displayName":"Mimoun","name":{"formatted":"Mimoun ","givenName":"Mimoun"},"nickname":"Fellah","phoneNumbers":[{"type":"mobile","value":"06 65 02 31 22","id":"1","pref":false}],"emails":[{"type":"home","value":"arr@voila.fr","id":"5","pref":false}],"addresses":[{"streetAddress":"Le Mans\\nSL JG","id":"2","formatted":"Le Mans\\nSL JG","type":"home","pref":false}],"ims":null,"organizations":null,"birthday":null,"note":null,"photos":null,"categories":null,"urls":null},{"id":"2","rawId":"2","displayName":"Biguet","name":{"formatted":"Biguet ","givenName":"Biguet"},"nickname":null,"phoneNumbers":[{"type":"mobile","value":"06 33 55 22 11","id":"6","pref":false}],"emails":[{"type":"home","value":"xgf@wxc.fr","id":"7","pref":false}],"addresses":null,"ims":null,"organizations":null,"birthday":null,"note":null,"photos":null,"categories":null,"urls":null}];
 
-r = postJson("postContacts", jsonContacts);
+//jsonContacts = [{"id":"1","rawId":"1","displayName":"Mimoun","name":{"formatted":"Mimoun ","givenName":"Mimoun"},"nickname":"Fellah","phoneNumbers":[{"type":"mobile","value":"06 65 02 31 22","id":"1","pref":false}],"emails":[{"type":"home","value":"arr@voila.fr","id":"5","pref":false}],"addresses":[{"streetAddress":"Le Mans\\nSL JG","id":"2","formatted":"Le Mans\\nSL JG","type":"home","pref":false}],"ims":null,"organizations":null,"birthday":null,"note":null,"photos":null,"categories":null,"urls":null},{"id":"2","rawId":"2","displayName":"Biguet","name":{"formatted":"Biguet ","givenName":"Biguet"},"nickname":null,"phoneNumbers":[{"type":"mobile","value":"06 33 55 22 11","id":"6","pref":false}],"emails":[{"type":"home","value":"xgf@wxc.fr","id":"7","pref":false}],"addresses":null,"ims":null,"organizations":null,"birthday":null,"note":null,"photos":null,"categories":null,"urls":null}];
+
+//r = postJson("postContacts", jsonContacts);
 //console.log(r);
 
 
