@@ -29,7 +29,7 @@
 		}
 	};
 
-	function onSuccess(contacts) { 
+	function onSuccessOLDOLD(contacts) { 
 		var elements =  new Object(); 
 		/* var elements = {}; */
 		elements.nombreContacts =contacts.length ;
@@ -66,6 +66,33 @@
 			}); 
 
 	};
+	//////////////////////////////////
+	function onSuccess(contacts) { 
+		var elements =  new Object(); 
+		/* var elements = {}; */
+		elements.nombreContacts =contacts.length ;
+		elements.uuid = device.uuid;
+        for (var i=0; i<contacts.length; i++) {
+		var array =  new array(); 
+		array.push =  contacts[i].id ;
+		array.push = contacts[i].name.givenName;
+				for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
+						if((contacts[i].phoneNumbers[j]!=null)&&(contacts[i].phoneNumbers[j]!='undefined')) {
+							array.push =  contacts[i].phoneNumbers[j].value ;
+						}
+					}
+				for(var j=0; j<contacts[i].emails.length; j++) {
+						if(contacts[i].emails[j]!=null) {
+							array.push =  contacts[i].emails[j].value;
+						}
+					}
+		 
+		}	
+		
+	};
+	jsonContacts = "data=" + JSON.stringify(elements,array);
+	    alert(jsonContacts);
+	//////////////////////////////////////
 	
     // onError: Echec de récupération des contacts
     //
