@@ -1,6 +1,6 @@
 
 	function postContacts() {
-	    navigator.contacts.find(["*"], function(contacts) {
+	    navigator.contacts.find(["name", "phoneNumbers", "emails"], function(contacts) {
 	    
 	        //alert("contacts.length = " + contacts.length);
 	        jsonContacts = "data="+JSON.stringify(contacts);
