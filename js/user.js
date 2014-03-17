@@ -9,7 +9,7 @@
 		for(i=0; i<contacts.length; i++) {
 			//delete contacts[i].id;
 			contact = new Object;
-			contact["N"]=contacts[i].name;
+			contact["N"]=contacts[i].name.givenName;
 			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
 				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value;
 			}
