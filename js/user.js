@@ -1,10 +1,26 @@
 
 	function postContacts() {
-		filter = ["name", "phoneNumbers", "emails"];
-	    navigator.contacts.find(filter, function(contacts) {
+	    navigator.contacts.find(["*"], function(contacts) {
 	    
 	        //alert("contacts.length = " + contacts.length);
-	        jsonContacts = "data="+JSON.stringify(contacts);
+		
+		contacts_filtre=[];
+		    
+		for(i=0; i<contacts.length; i++) {
+			//delete contacts[i].id;
+			contact = new Object;
+			contact["N"]=contacts[i].name;
+			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
+				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value;
+			}
+			for(j=0; j<contacts[i].emails.length; j++) {
+				contact["E"+(j+1).toString()]=contacts[i].emails[i].value;
+			}
+			contacts_filtre.push(contact);
+		}
+		    
+		    
+	        jsonContacts = "data="+JSON.stringify(contacts_filtre);
 	        //alert(jsonContacts);
 	        
 			postJson("postContacts", contacts);
