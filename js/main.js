@@ -29,7 +29,7 @@ function postJson(action, obj, callback, needUserData) {
     alert(jsonTosend);
     console.log("http://rb-cron.ceri.es/app/call/post.php?g=yes&"+jsonTosend);
     
-	/*$.ajax({
+	$.ajax({
 	    type       : "POST",
 	    url        : "http://rb-cron.ceri.es/app/call/post.php",
 	    data       : jsonTosend,
@@ -57,7 +57,7 @@ function postJson(action, obj, callback, needUserData) {
 	    error      : function() {
 		    jsonError(false);
 	    }
-	}); */
+	}); 
 	
 }
 
