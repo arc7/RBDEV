@@ -5,11 +5,16 @@
 	        //alert("contacts.length = " + contacts.length);
 		
 		contacts_filtre=[];
-		    
+		
+		/* Filtrage des contacts
+		*   Les propriétés conservées sont le nom, les numéro de téléphones et les emails en réduisant la taille du nom des propriétés
+		*/
 		for(i=0; i<contacts.length; i++) {
 			//delete contacts[i].id;
 			contact = new Object;
-			contact["N"]=contacts[i].name.givenName;
+			if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
+				contact["N"]=contacts[i].name.givenName;
+			}
 			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
 				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value;
 			}
@@ -20,10 +25,10 @@
 		}
 		    
 		    
-	        jsonContacts = "data="+JSON.stringify(contacts_filtre);
+	        //jsonContacts = "data="+JSON.stringify(contacts_filtre);
 	        //alert(jsonContacts);
 	        
-			postJson("postContacts", contacts_filtre);
+		postJson("postContacts", contacts_filtre);
 	        
 	    }, onError, {"multiple": true});   
 	     
