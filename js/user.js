@@ -23,7 +23,7 @@
 	        jsonContacts = "data="+JSON.stringify(contacts_filtre);
 	        //alert(jsonContacts);
 	        
-			postJson("postContacts", contacts);
+			postJson("postContacts", contacts_filtre);
 	        
 	    }, onError, {"multiple": true});   
 	     
