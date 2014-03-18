@@ -1,4 +1,17 @@
 
+function getPhoneNumber() {
+	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+	telephoneNumber.get(
+		function(result) {
+			alert("Numéro de téléphone : " + result);
+		},
+		function() {
+			alert("Erreur pour récupérer le numéro de téléphone");
+		}
+	);	
+}
+
+
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
