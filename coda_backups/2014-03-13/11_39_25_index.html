@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQM Complex Demo</title>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi"/>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>          
+    </head>
+    <body>
+        <div data-role="page" id="index">
+            <div data-theme="b" data-role="header">
+                <h1>Index page</h1>
+            </div>
+
+            <div data-role="content">
+        <script>
+    $.ajax({
+        type       : "POST",
+        url        : "http://rb-cron.ceri.es/app/post.php",
+        crossDomain: true,
+        beforeSend : function() {$.mobile.loading('show')},
+        complete   : function() {$.mobile.loading('hide')},
+        data       : {username : 'subin', password : 'passwordx'},
+        dataType   : 'json',
+        success    : function(response) {
+            //console.error(JSON.stringify(response));
+            alert('Works!');
+        },
+        error      : function() {
+            //console.error("error");
+            alert('Not working!');                  
+        }
+    });     
+        </script>
+
+            </div>
+        </div>    
+    </body>
+</html>   

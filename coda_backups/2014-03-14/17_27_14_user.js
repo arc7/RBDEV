@@ -1,47 +1,12 @@
 
-function getPhoneNumber() {
-	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-	telephoneNumber.get(
-		function(result) {
-			alert("Numéro de téléphone : " + result);
-		},
-		function() {
-			alert("Erreur pour récupérer le numéro de téléphone");
-		}
-	);	
-}
-
-
 	function postContacts() {
-	    navigator.contacts.find(["*"], function(contacts) {
+	    navigator.contacts.find(["name", "phoneNumbers", "emails"], function(contacts) {
 	    
-	        //alert("contacts.length = " + contacts.length);
-		
-		contacts_filtre=[];
-		
-		/* Filtrage des contacts
-		*   Les propriétés conservées sont le nom, les numéro de téléphones et les emails en réduisant la taille du nom des propriétés
-		*/
-		for(i=0; i<contacts.length; i++) {
-			//delete contacts[i].id;
-			contact = new Object;
-			if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
-				contact["N"]=contacts[i].name.givenName;
-			}
-			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
-				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value.replace(/\s+/g,"");;
-			}
-			for(j=0; j<contacts[i].emails.length; j++) {
-				contact["E"+(j+1).toString()]=contacts[i].emails[i].value;
-			}
-			contacts_filtre.push(contact);
-		}
-		    
-		    
-	        //jsonContacts = "data="+JSON.stringify(contacts_filtre);
-	        //alert(jsonContacts);
+	        alert("contacts.length = " + contacts.length);
+	        jsonContacts = "data="+JSON.stringify(contacts);
+	        alert(jsonContacts);
 	        
-		postJson("postContacts", contacts_filtre);
+			postJson("postContacts", contacts);
 	        
 	    }, onError, {"multiple": true});   
 	     
@@ -82,7 +47,7 @@ function getPhoneNumber() {
 	        
 			$.ajax({
 			    type       : "POST",
-			    url        : "http://rb.cerivan.com/app/post.php",
+			    url        : "http://rb-cron.ceri.es/app/post.php",
 			    data       : jsonContacts,
 			    dataType   : 'json',
 			    success    : function(response) {
@@ -137,8 +102,6 @@ function getPhoneNumber() {
 function getCurrentUser() {
 
 	//removeStorageVal("uid");
-	//alert(getStorageVal("uid"));
-	//alert(getStorageVal("token"));
 	
 	if (getStorageVal("uid") && getStorageVal("token")) {
 		return returnUserInfo(getStorageVal("uid"),getStorageVal("token"));
@@ -174,8 +137,18 @@ function returnUserInfo(uid, token) {
 }
 
 
+myUser = getCurrentUser();
+console.log(myUser);
+alert(getStorageVal("uid"));
+alert(getStorageVal("token"));;
 
- 
+
+jsonContacts = [{"id":"1","rawId":"1","displayName":"Mimoun","name":{"formatted":"Mimoun ","givenName":"Mimoun"},"nickname":"Fellah","phoneNumbers":[{"type":"mobile","value":"06 65 02 31 22","id":"1","pref":false}],"emails":[{"type":"home","value":"arr@voila.fr","id":"5","pref":false}],"addresses":[{"streetAddress":"Le Mans\\nSL JG","id":"2","formatted":"Le Mans\\nSL JG","type":"home","pref":false}],"ims":null,"organizations":null,"birthday":null,"note":null,"photos":null,"categories":null,"urls":null},{"id":"2","rawId":"2","displayName":"Biguet","name":{"formatted":"Biguet ","givenName":"Biguet"},"nickname":null,"phoneNumbers":[{"type":"mobile","value":"06 33 55 22 11","id":"6","pref":false}],"emails":[{"type":"home","value":"xgf@wxc.fr","id":"7","pref":false}],"addresses":null,"ims":null,"organizations":null,"birthday":null,"note":null,"photos":null,"categories":null,"urls":null}];
+
+r = postJson("postContacts", jsonContacts);
+//console.log(r);
+
+
 
 
 

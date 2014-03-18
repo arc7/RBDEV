@@ -14,24 +14,22 @@ function postJson(action, obj, callback, needUserData) {
 	obj = new Object;
 	obj.data = to;
 	
+//	obj.action = action;
 	obj.params = new Object;
 	obj.params.action = action;
-	if (needUserData != false) {
-		getCurrentUser();
-		obj.params.uid = getStorageVal("uid");
-		obj.params.token = getStorageVal("token");
-	}
 	
 	console.log(obj);
 	
+	console.log($.toJSON(obj));
 	
-    jsonTosend = "data="+$.toJSON(obj);
-    alert(jsonTosend);
-    console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
+	if (needUserData !=false) getCurrentUser();
+	
+    jsonTosend = "data="+JSON.stringify(obj);
+    console.log(jsonTosend);
     
 	$.ajax({
 	    type       : "POST",
-	    url        : "http://rb.cerivan.com/app/call/post.php",
+	    url        : "http://rb-cron.ceri.es/app/call/post.php",
 	    data       : jsonTosend,
 	    dataType   : 'json',
 	    success    : function(response) {
