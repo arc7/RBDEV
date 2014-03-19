@@ -104,13 +104,23 @@ function randomString(length) {
 	
 // Fonction de test du hashage
 function runTest() {
-	var texte_cryptage = $("#texte").val();
-	$("#test").text("");
+	//var texte_cryptage = $("#texte").val();
+	var texte_cryptage = "Bonjour";
+	/*$("#test").text("");
 	$("#test").append("Numéro a saler et hasher : "+texte_cryptage+"<br />");
 	var texte_cryptage_s = saler(texte_cryptage, salt);
 	$("#test").append("Salage : "+texte_cryptage_s+"<br />");
 	var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);
 	$("#test").append("Hashage md5 : "+texte_cryptage_s_h_md5+"<br />");
 	var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
-	$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");
+	$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");*/
+	var results = "";
+	results+="Numéro à saler et hasher : "+texte_cryptage+"<br />";
+	var texte_cryptage_s = saler(texte_cryptage, salt);
+	results+="Salage : "+texte_cryptage_s+"<br />";
+	var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);
+	results+="Hashage md5 : "+texte_cryptage_s_h_md5+"<br />";
+	var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
+	results+="Hashage sha1 : "+texte_cryptage_s_h_sha1;
+	
 }
