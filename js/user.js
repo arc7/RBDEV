@@ -3,7 +3,7 @@ function getPhoneNumber() {
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
 	telephoneNumber.get(
 		function(result) {
-			//alert("Phone number : " + result);
+			alert("Phone number : " + result);
 			return result;
 		},
 		function() {

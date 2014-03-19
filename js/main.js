@@ -82,25 +82,25 @@ function removeStorageVal(key) {
 var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 function randomString(length) {
-				var i = 0;
-				var charPos = 0;
-				var string = "";
-				for(i=0;i<length;i++) {
-					charPos = Math.floor(Math.random()*charSet.length);
-					//console.log(charPos);
-					string = string.concat(charSet.charAt(charPos));
-					//console.log(charSet.charAt(charPos));
-				}
-				return string;
-			}
+	var i = 0;
+	var charPos = 0;
+	var string = "";
+	for(i=0;i<length;i++) {
+		charPos = Math.floor(Math.random()*charSet.length);
+		//console.log(charPos);
+		string = string.concat(charSet.charAt(charPos));
+		//console.log(charSet.charAt(charPos));
+	}
+	return string;
+}
 			
-			var salt = randomString(6);
+var salt = randomString(6);
 			
 // Fonction de salage prenant en paramètres la chaîne à saler et la chaîne utilisée pour le salage
-			function saler(a,b)
-			{
-				return b.substr(0,3).concat(a,b.substr(3,3));
-			}
+function saler(a,b)
+{
+	return b.substr(0,3).concat(a,b.substr(3,3));
+}
 	
 // Fonction de test du hashage
 function runTest() {
