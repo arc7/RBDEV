@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<title>Test hashage</title>
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/sha1.js"></script>
+		<script src="js/md5.js"></script>
+		<script>
+			//var numero = "0634832198";
+			var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			function randomString(length) {
+				var i = 0;
+				var charPos = 0;
+				var string = "";
+				for(i=0;i<length;i++) {
+					charPos = Math.floor(Math.random()*charSet.length);
+					//console.log(charPos);
+					string = string.concat(charSet.charAt(charPos));
+					//console.log(charSet.charAt(charPos));
+				}
+				return string;
+			}
+			
+			var salt = randomString(6);
+			
+			function saler(a,b)
+			{
+				return b.substr(0,3).concat(a,b.substr(3,3));
+			}
+			
+			function runTest() {
+				var texte_cryptage = $("#texte").val();
+				$("#test").text("");
+				$("#test").append("Numéro a saler et hasher : "+texte_cryptage+"<br />");
+				var texte_cryptage_s = saler(texte_cryptage, salt);
+				$("#test").append("Salage : "+texte_cryptage_s+"<br />");
+				var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);
+				$("#test").append("Hashage md5 : "+texte_cryptage_s_h_md5+"<br />");
+				var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
+				$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");
+			}
+			
+			var clef = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+	
+			function microtime(get_as_float) {
+				//  discuss at: http://phpjs.org/functions/microtime/
+				// original by: Paulo Freitas
+				//   example 1: timeStamp = microtime(true);
+				//   example 1: timeStamp > 1000000000 && timeStamp < 2000000000
+				//   returns 1: true
+
+				var now = new Date().getTime() / 1000;
+				var s = parseInt(now, 10);
+
+				return (get_as_float) ? now : (Math.round((now - s) * 1000) / 1000) + ' ' + s;
+			}
+
+
+	function Crypter(a,b){
+		if(a==""||b=="") return a;
+		e=clef;
+		u=e{Seed(0,63,microtime(true).b)};
+		f=md5(b.u,true);
+		l=Unorder(e,f,64);
+		t=g="";
+		c=a.length;
+		s=c-c%3;
+		x=l{Seed(0,63,f.microtime(true))};
+		n=ord(x)+ord(u);
+		v=self::Unorder("0123",f.n,4);
+		for(r=i=0;i<s;i+=3,r++) {
+			g=(ord((a{i}^l{(n+r+1)%64}))<<16)+
+				(ord((a{i+1}^l{(n+r+2)%64}))<<8)+
+				(ord((a{i+2}^l{(n+r+3)%64})));
+			g=array(v{0}=>l{g>>18},
+			v{1}=>l{(g>>12)&63},
+			v{2}=>l{(g>>6)&63},
+			v{3}=>l{g&63});
+			ksort(g);
+			t.=join(g);
+		}
+		switch(c-s) {
+			case 1:
+				g=ord((a{i}^l{(n+r+4)%64}))<<16;
+				v=self::Unorder("01",f,2);
+				g=array(v{0}=>l{g>>18},
+				v{1}=>l{(g>>12)&63});
+				ksort(g);
+				t.=join(g);
+				break;
+			case 2:
+				g=(ord((a{i}^l{(n+r+4)%64}))<<16)+
+					(ord((a{i+1}^l{(n+r+5)%64}))<<8);
+				v=self::Unorder("012",f,3);
+				g=array(v{0}=>l{g>>18},
+				v{1}=>l{(g>>12)&63},
+				v{2}=>l{(g>>6)&63});
+				ksort(g);
+				t.=join(g);
+				break;
+		}
+		c=t.length;
+		r=c-self::Seed(0,c-1,b.c);
+		return substr_replace(t,x.u,-r,-r);
+	}
+	
+	function Unorder(x,b,c) {
+		w=0;y=b.length;
+		for(i=0;i<c;i++) {
+			w=(w+ord(x[i])+
+			ord(b[i%y]))%c;
+			j=x[i];x[i]=x[w];x[w]=j;
+		}
+		return x;
+	}
+
+	function ReverseA(a) {
+		return strrev(substr(a,0,2))
+			.substr(a,-2);
+	}
+
+	function ReverseB(a) {
+		return substr(self::ReverseA(a),0,1)
+			.strrev(substr(self::ReverseA(a),1,2))
+			.substr(self::ReverseA(a),-1);
+	}
+
+	function ReverseC(a) {
+		return substr(self::ReverseB(a),0,2)
+			.strrev(substr(self::ReverseB(a),2,3));
+	}
+
+	function Seed(a,b,c) {
+		d=unpack("Na",hash("crc32",c,true));
+		return round(((d['a']&2147483647)/2147483647.0)*(b-a))+a;
+	}
+
+		</script>
+	</head>
+	<body>
+		<input type="text" id="texte">
+		<button onclick="runTest()">Run Test</button>
+		<p id="test"></p>
+	</body>
+</html>

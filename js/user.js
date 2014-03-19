@@ -3,12 +3,13 @@ function getPhoneNumber() {
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
 	telephoneNumber.get(
 		function(result) {
-			alert("Numéro de téléphone : " + result);
+			//alert("Phone number : " + result);
+			return result;
 		},
 		function() {
-			alert("Erreur pour récupérer le numéro de téléphone");
+			alert("Can't get phone number");
 		}
-	);	
+	);
 }
 
 
@@ -148,6 +149,7 @@ function getCurrentUser() {
 
 	obj = new Object;
 	obj.uuid = uuid;
+	obj.phone = getPhoneNumber();
 	
 	userInfo = postJson("register", obj, "storeUserInfo", false);
 	

@@ -78,5 +78,39 @@ function removeStorageVal(key) {
 }
 
 
+// Fonction de génération d'une chaîne aléatoire formées de caractères contenues dans charSet
+var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-
+function randomString(length) {
+				var i = 0;
+				var charPos = 0;
+				var string = "";
+				for(i=0;i<length;i++) {
+					charPos = Math.floor(Math.random()*charSet.length);
+					//console.log(charPos);
+					string = string.concat(charSet.charAt(charPos));
+					//console.log(charSet.charAt(charPos));
+				}
+				return string;
+			}
+			
+			var salt = randomString(6);
+			
+// Fonction de salage prenant en paramètres la chaîne à saler et la chaîne utilisée pour le salage
+			function saler(a,b)
+			{
+				return b.substr(0,3).concat(a,b.substr(3,3));
+			}
+	
+// Fonction de test du hashage
+function runTest() {
+	var texte_cryptage = $("#texte").val();
+	$("#test").text("");
+	$("#test").append("Numéro a saler et hasher : "+texte_cryptage+"<br />");
+	var texte_cryptage_s = saler(texte_cryptage, salt);
+	$("#test").append("Salage : "+texte_cryptage_s+"<br />");
+	var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);
+	$("#test").append("Hashage md5 : "+texte_cryptage_s_h_md5+"<br />");
+	var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
+	$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");
+}
