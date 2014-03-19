@@ -4,6 +4,7 @@
 function jsonError(response) {
 	if (response) console.log(JSON.stringify(response));
     console.error("Erreur");
+    alert("Erreur : " + JSON.stringify(response));
     console.log('Not working!');                  
 }
 
@@ -42,6 +43,7 @@ function postJson(action, obj, callback, needUserData) {
 	    	}
 	        console.log(JSON.stringify(response));
 	        console.log('Works!');
+	        alert("Good : "+JSON.stringify(response));
 
 			if (callback) {	        
 			
