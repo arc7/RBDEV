@@ -40,7 +40,7 @@ function getPhoneNumber() {
 		    
 		    
 	        //jsonContacts = "data="+JSON.stringify(contacts_filtre);
-	        alert(contacts_filtre);
+	        alert(JSON.stringify(contacts_filtre));
 	        
 		postJson("postContacts", contacts_filtre);
 	        
