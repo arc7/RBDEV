@@ -9,6 +9,8 @@ function jsonError(response) {
 
 function postJson(action, obj, callback, needUserData) {
 	
+	alert("postJSON déclaré...");
+	
 	to = obj;
 	
 	obj = new Object;

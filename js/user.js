@@ -150,6 +150,7 @@ function getCurrentUser() {
 	//alert(getStorageVal("token"));
 	
 	if (getStorageVal("uid") && getStorageVal("token")) {
+		alertToken();
 		return returnUserInfo(getStorageVal("uid"),getStorageVal("token"));
 	}
 
@@ -165,12 +166,17 @@ function getCurrentUser() {
 	
 }
 
+function alertToken() {
+	alert("User : "+getStorageVal("uid")+" -> "+getStorageVal("token"));
+}
+
 function storeUserInfo(userInfo) {
 	console.log(userInfo);
 	
 	setStorageVal("uid", userInfo.data.uid);
 	setStorageVal("token", userInfo.data.token);
-	//alert("YEAH !"+getStorageVal("uid")+getStorageVal("token"));
+	alertToken();
+	
 	return returnUserInfo(getStorageVal("uid"),getStorageVal("token"));
 
 }

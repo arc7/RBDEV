@@ -10,16 +10,17 @@
       .on  { background:blue; }
       .off { background:red; }
      </style>-->
-	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+     
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="js/jquery.json.min.js"></script>
-    <script src="js/sha1.js"></script>
-    <script src="js/md5.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/sha1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/md5.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
-
-    <script type="text/javascript"  src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src="telephonenumber.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/telephonenumber.js"></script>
+    
     <script src="http://debug.phonegap.com/target/target-script-min.js#19977350-ab2e-11e2-bcb1-12313d16b935"></script>
 	
     <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
@@ -28,6 +29,7 @@
  <body onload="getCurrentUser();">
 
 	<button onclick="window.location.reload()">Recharger</button>
+	<button onclick="getCurrentUser()">Générer token</button>
 	<button onclick="removeData()">Supprimer token</button>
 	<button onclick="postContacts()">Mes contacts</button>
 	<button onclick="getPhoneNumber()">Numéro de Téléphone</button>
