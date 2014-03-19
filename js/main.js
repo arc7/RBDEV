@@ -62,6 +62,10 @@ function postJson(action, obj, callback, needUserData) {
 }
 
 
+
+
+
+
 function getStorageVal(key) {
 	value = window.localStorage.getItem(key);
 	
@@ -78,7 +82,7 @@ function removeStorageVal(key) {
 }
 
 
-// Fonction de génération d'une chaîne aléatoire formées de caractères contenues dans charSet
+// Fonction de gÃ©nÃ©ration d'une chaÃ®ne alÃ©atoire formÃ©es de caractÃ¨res contenues dans charSet
 var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 function randomString(length) {
@@ -96,7 +100,7 @@ function randomString(length) {
 			
 var salt = randomString(6);
 			
-// Fonction de salage prenant en paramètres la chaîne à saler et la chaîne utilisée pour le salage
+// Fonction de salage prenant en paramÃ¨tres la chaÃ®ne Ã  saler et la chaÃ®ne utilisÃ©e pour le salage
 function saler(a,b)
 {
 	return b.substr(0,3).concat(a,b.substr(3,3));
@@ -107,7 +111,7 @@ function runTest() {
 	//var texte_cryptage = $("#texte").val();
 	var texte_cryptage = "Bonjour";
 	/*$("#test").text("");
-	$("#test").append("Numéro a saler et hasher : "+texte_cryptage+"<br />");
+	$("#test").append("NumÃ©ro a saler et hasher : "+texte_cryptage+"<br />");
 	var texte_cryptage_s = saler(texte_cryptage, salt);
 	$("#test").append("Salage : "+texte_cryptage_s+"<br />");
 	var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);
@@ -115,7 +119,7 @@ function runTest() {
 	var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
 	$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");*/
 	var results = "";
-	results = results.concat("Numéro à saler et hasher : ",texte_cryptage,"<br />");
+	results = results.concat("NumÃ©ro Ã  saler et hasher : ",texte_cryptage,"<br />");
 	var texte_cryptage_s = saler(texte_cryptage, salt);
 	results = results.concat("Salage : ",texte_cryptage_s,"<br />");
 	var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);

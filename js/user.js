@@ -21,7 +21,7 @@ function getPhoneNumber() {
 		contacts_filtre=[];
 		
 		/* Filtrage des contacts
-		*   Les propriétés conservées sont le nom, les numéro de téléphones et les emails en réduisant la taille du nom des propriétés
+		*   Les propriÃ©tÃ©s conservÃ©es sont le nom, les numÃ©ro de tÃ©lÃ©phones et les emails en rÃ©duisant la taille du nom des propriÃ©tÃ©s
 		*/
 		for(i=0; i<contacts.length; i++) {
 			//delete contacts[i].id;
@@ -98,7 +98,7 @@ function getPhoneNumber() {
 
 	};
 
-    // onError: Echec de rÃ©cupÃ©ration des contacts
+    // onError: Echec de rÃƒÂ©cupÃƒÂ©ration des contacts
     //
     function onError(contactError) {
         alert('onError!');
@@ -134,6 +134,14 @@ function getPhoneNumber() {
 //#######################################################################################
 //#######################################################################################
 
+function removeData() {
+	removeStorageVal("uid");
+	removeStorageVal("token");
+	alert("Infos supprimÃ©es");
+}
+
+
+
 
 function getCurrentUser() {
 
@@ -145,11 +153,11 @@ function getCurrentUser() {
 		return returnUserInfo(getStorageVal("uid"),getStorageVal("token"));
 	}
 
-	uuid = "testStÃ©phane";
+	uuid = "testCerivan";
 
 	obj = new Object;
 	obj.uuid = uuid;
-	obj.phone = getPhoneNumber();
+	//obj.phone = getPhoneNumber();
 	
 	userInfo = postJson("register", obj, "storeUserInfo", false);
 	
