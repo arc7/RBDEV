@@ -122,5 +122,5 @@ function runTest() {
 	results = results.concat("Hashage md5 : ",texte_cryptage_s_h_md5,"<br />");
 	var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
 	results = results.concat("Hashage sha1 : ",texte_cryptage_s_h_sha1);
-	
+	alert(results);
 }
