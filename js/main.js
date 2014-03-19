@@ -9,36 +9,24 @@ function jsonError(response) {
 
 function postJson(action, obj, callback, needUserData) {
 	
-	alert("postJSON déclaré1...");
 	
 	to = obj;
 	
-	alert("postJSON déclaré2...");
-
 	obj = new Object;
-	alert("postJSON déclaré3...");
 	obj.data = to;
-	alert("postJSON déclaré4...");
 	
 	obj.params = new Object;
-	alert("postJSON déclaré5...");
 	obj.params.action = action;
-	alert("postJSON déclaré6...");
 	if (needUserData != false) {
-	alert("postJSON déclaré7...");
 		getCurrentUser();
 		obj.params.uid = getStorageVal("uid");
-	alert("postJSON déclaré8...");
 		obj.params.token = getStorageVal("token");
 	}
-	alert("postJSON déclaré9...");
 	
 	console.log(obj);
 	
-	alert("postJSON déclaré10...");
 	
-    jsonTosend = "data="+$.toJSON(obj);
-	alert("postJSON déclaré11...");
+    jsonTosend = "data="+JSON.stringify(obj);
     alert(jsonTosend);
     console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     

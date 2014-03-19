@@ -154,11 +154,13 @@ function getCurrentUser() {
 		return returnUserInfo(getStorageVal("uid"),getStorageVal("token"));
 	}
 
-	uuid = "testCerivan";
-
 	obj = new Object;
-	obj.uuid = uuid;
-	//obj.phone = getPhoneNumber();
+	
+
+	if (typeof device == "undefined") obj.uuid = "testCerivan";
+	else obj.uuid = device.uuid; 
+	
+	if (typeof cordova != "undefined") obj.phone = getPhoneNumber();
 	
 	userInfo = postJson("register", obj, "storeUserInfo", false);
 	
