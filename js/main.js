@@ -92,7 +92,7 @@ function removeStorageVal(key) {
 
 
 // Fonction de génération d'une chaîne aléatoire formées de caractères contenues dans charSet
-var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+/* var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 function randomString(length) {
 	var i = 0;
@@ -137,3 +137,4 @@ function runTest() {
 	results = results.concat("Hashage sha1 : ",texte_cryptage_s_h_sha1);
 	alert(results);
 }
+ */
