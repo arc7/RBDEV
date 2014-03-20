@@ -8,24 +8,15 @@
     
      
 	<script type="text/javascript" charset="utf-8" src="js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
-<script>
-document.addEventListener("deviceready", onDeviceReady, false);
+    <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/telephonenumber.js"></script>
 
-function onDeviceReady() {
-    // Now safe to use device APIs
-	$.get( "http://rb.cerivan.com/app/call/post.php", function( data ) {
-	  $( "#coucou" ).append( data );
-	});
-}
-</script>
 
   </head>
-  
-  
- <body onLoad="onDeviceReady()">
- 
- <div id="coucou">coucou</div>
+ <body>
 
 	<button onclick="window.location.reload()">Recharger</button>
 	<button onclick="getCurrentUser()">Générer token</button>
