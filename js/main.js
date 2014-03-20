@@ -36,6 +36,7 @@ function postJson(action, obj, callback, needUserData) {
 	    url        : "http://rb.cerivan.com/app/call/post.php",
 	    data       : obj,
 	    dataType   : 'jsonp',
+	    jsonp : 'data',
 	    success    : function(response) {
 	    	if (response.success == false) {
 		    	alert("Operation echoue !"+response.success)
