@@ -33,7 +33,7 @@ function postJson(action, obj, callback, needUserData) {
     console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
 	$.ajax({
-	    type       : "POST",
+	    type       : "GET",
 	    url        : "http://rb.cerivan.com/app/call/post.php",
 	    data       : jsonTosend,
 	    success    : function(response) {
