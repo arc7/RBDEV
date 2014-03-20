@@ -26,7 +26,8 @@ function postJson(action, obj, callback, needUserData) {
 	
 	console.log(obj);
 	
-    jsonTosend = "data="+JSON.stringify(obj);
+    //jsonTosend = "data="+JSON.stringify(obj);
+    jsonTosend = "data="+$.toJSON(obj);
     //jsonTosend = JSON.stringify(obj);
     alert(jsonTosend);
     console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
