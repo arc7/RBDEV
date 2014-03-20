@@ -38,7 +38,8 @@ function postJson(action, obj, callback, needUserData) {
 	    dataType   : 'json',
 	    success    : function(response) {
 	    	if (response.success == false) {
-		    	jsonError(response);
+		    	alert("Operation echoue !"+response.success)
+			jsonError(response);
 		    	return false;
 	    	}
 	        console.log(JSON.stringify(response));
