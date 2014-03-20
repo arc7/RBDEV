@@ -60,7 +60,6 @@ function postJson(action, obj, callback, needUserData) {
 	        return response;
 	    },
 	    error      : function() {
-		    alert(this.url);
 		    jsonError(false);
 	    }
 	}); 
