@@ -34,7 +34,7 @@ function getPhoneNumber() {
 				contact["N"]=contacts[i].name.givenName;
 			}
 			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
-				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value.replace(/\s+/g,"");;
+				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value.replace(/\s+/g,"");
 			}
 			for(j=0; j<contacts[i].emails.length; j++) {
 				contact["E"+(j+1).toString()]=contacts[i].emails[i].value;
