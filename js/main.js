@@ -28,13 +28,14 @@ function postJson(action, obj, callback, needUserData) {
 	
 	
     //jsonTosend = "data="+JSON.stringify(obj);
+    jsonTosend = JSON.stringify(obj);
     alert(jsonTosend);
     console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
 	$.ajax({
 	    type       : "POST",
 	    url        : "http://rb.cerivan.com/app/call/post.php",
-	    data       : JSON.stringify(obj),
+	    data       : jsonTosend,
 	    dataType   : 'json',
 	    success    : function(response) {
 	    	if (response.success == false) {
