@@ -1,3 +1,10 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    // Now safe to use device APIs
+    getCurrentUser();
+}
+
 
 
 
@@ -126,7 +133,7 @@ function runTest() {
 	var texte_cryptage_s_h_md5 = hex_md5(texte_cryptage_s);
 	$("#test").append("Hashage md5 : "+texte_cryptage_s_h_md5+"<br />");
 	var texte_cryptage_s_h_sha1 = hex_sha1(texte_cryptage_s);
-	$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");*/
+	$("#test").append("Hashage sha1 : "+texte_cryptage_s_h_sha1+"<br />");
 	var results = "";
 	results = results.concat("Numéro à saler et hasher : ",texte_cryptage,"<br />");
 	var texte_cryptage_s = saler(texte_cryptage, salt);
