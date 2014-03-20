@@ -40,6 +40,7 @@ function postJson(action, obj, callback, needUserData) {
 	    url        : urlToSend,
 	    data       : jsonTosend,
 	    dataType	: "json",
+	    cache		: false,
 	    success    : function(response) {
 	    	if (response.success == false) {
 		    	alert("Operation echoue ! : "+response.success)
