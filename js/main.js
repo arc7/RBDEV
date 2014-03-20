@@ -27,15 +27,19 @@ function postJson(action, obj, callback, needUserData) {
 	console.log(obj);
 	
     //jsonTosend = "data="+JSON.stringify(obj);
-    jsonTosend = "data="+$.toJSON(obj);
+    jsonTosend = "data="+JSON.stringify(obj);
     //jsonTosend = JSON.stringify(obj);
     alert(jsonTosend);
     console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
+    urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
+    console.log(urlToSend);
+    
 	$.ajax({
-	    type       : "GET",
-	    url        : "http://rb.cerivan.com/app/call/post.php",
+	    type       : "POST",
+	    url        : urlToSend,
 	    data       : jsonTosend,
+	    dataType	: "json",
 	    success    : function(response) {
 	    	if (response.success == false) {
 		    	alert("Operation echoue ! : "+response.success)
