@@ -160,7 +160,7 @@ function getCurrentUser() {
 	if (typeof device == "undefined") obj.uuid = "testCerivan";
 	else obj.uuid = device.uuid; 
 	
-	if (typeof cordova != "undefined") obj.phone = getPhoneNumber();
+	//if (typeof cordova != "undefined") obj.phone = getPhoneNumber();
 	
 	userInfo = postJson("register", obj, "storeUserInfo", false);
 	

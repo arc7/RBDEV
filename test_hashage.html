@@ -67,7 +67,7 @@
 		s=c-c%3;
 		x=l{Seed(0,63,f.microtime(true))};
 		n=ord(x)+ord(u);
-		v=self::Unorder("0123",f.n,4);
+		v=Unorder("0123",f.n,4);
 		for(r=i=0;i<s;i+=3,r++) {
 			g=(ord((a{i}^l{(n+r+1)%64}))<<16)+
 				(ord((a{i+1}^l{(n+r+2)%64}))<<8)+
@@ -100,7 +100,7 @@
 				break;
 		}
 		c=t.length;
-		r=c-self::Seed(0,c-1,b.c);
+		r=c-Seed(0,c-1,b.c);
 		return substr_replace(t,x.u,-r,-r);
 	}
 	
