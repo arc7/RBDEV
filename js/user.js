@@ -1,4 +1,8 @@
 
+function testWhitelist {
+	var ref = window.open('http://rb.cerivan.com/app/call/post.php?g=yes&data={%22data%22:{%22uuid%22:%223a6fdb5b840fe3ac%22},%22params%22:{%22action%22:%22register%22}}', '_blank', 'location=yes');
+}
+
 function getPhoneNumber() {
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
 	telephoneNumber.get(

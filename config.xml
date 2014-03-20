@@ -39,7 +39,7 @@
 	<gap:plugin name="org.apache.cordova.core.console" /> 
 	<gap:plugin name="org.apache.cordova.core.contacts" /> 
 	<gap:plugin name="org.apache.cordova.core.device" /> 
- 
+	<gap:plugin name="org.apache.cordova.core.inappbrowser" />
 	<gap:plugin name="org.apache.cordova.core.dialogs" /> 
 	<gap:plugin name="org.apache.cordova.core.network-information" /> 
 	<gap:plugin name="org.apache.cordova.core.vibration" />
@@ -47,6 +47,6 @@
 	<gap:plugin name="org.apache.cordova.core.file-transfer" />
 	<gap:plugin name="com.simonmacdonald.telephonenumber" />
 
-	<access origin="http://rb.cerivan.com*" />
+	<access origin="http://rb.cerivan.com*" subdomains="true" />
 
 </widget>
