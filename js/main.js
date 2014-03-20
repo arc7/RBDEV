@@ -26,7 +26,6 @@ function postJson(action, obj, callback, needUserData) {
 	
 	console.log(obj);
 	
-	
     //jsonTosend = "data="+JSON.stringify(obj);
     jsonTosend = JSON.stringify(obj);
     alert(jsonTosend);
@@ -35,8 +34,8 @@ function postJson(action, obj, callback, needUserData) {
 	$.ajax({
 	    type       : "POST",
 	    url        : "http://rb.cerivan.com/app/call/post.php",
-	    data       : jsonTosend,
-	    dataType   : 'json',
+	    data       : obj,
+	    dataType   : 'jsonp',
 	    success    : function(response) {
 	    	if (response.success == false) {
 		    	alert("Operation echoue !"+response.success)
