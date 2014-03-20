@@ -37,16 +37,15 @@ function postJson(action, obj, callback, needUserData) {
     jsonTosend = "data="+JSON.stringify(obj);
     //jsonTosend = JSON.stringify(obj);
     alert(jsonTosend);
-    console.log("http://rb-cron.ceri.es/app/call/post.php?g=yes&"+jsonTosend);
+    console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
-    urlToSend = "http://rb-cron.ceri.es/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
+    urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
     console.log(urlToSend);
     
 	$.ajax({
-	    type       : "POST",
+	    type       : "GET",
 	    url        : urlToSend,
 	    data       : jsonTosend,
-	    dataType	: "json",
 	    cache		: false,
 	    success    : function(response) {
 	    	if (response.success == false) {
