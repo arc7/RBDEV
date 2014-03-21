@@ -16,6 +16,10 @@ function jsonError(response) {
     console.log('Not working!');                  
 }
 
+function clearJSON() {
+	setStorageVal("queueJSON", new Array());
+}
+
 function storeJSON(action, obj, callback, needUserData) {
 	object = new Object;
 	object.action = action;
