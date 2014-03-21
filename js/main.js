@@ -25,6 +25,7 @@ function storeJSON(action, obj, callback, needUserData) {
 	
 	queueJSON = getStorageVal("queueJSON");
 	if(queueJSON) {
+		queueJSON = JSON.parse(queueJSON);
 		queueJSON.push(object);
 		//removeStorageVal("queueJSON");
 		//setStorageVal("queueJSON", queueJSON);
