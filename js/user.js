@@ -30,9 +30,7 @@ function onError(contactError) {
 
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
-	    
-	        alert("contacts.length = " + contacts.length);
-		
+	    	
 		contacts_filtre=[];
 		
 		/* Filtrage des contacts
@@ -54,7 +52,7 @@ function onError(contactError) {
 		}
 		    
 		    
-	    jsonContacts = "data="+JSON.stringify(contacts_filtre);
+	    jsonContacts = JSON.stringify(contacts_filtre);
 	    alert(jsonContacts);
 	        
 		storeJSON("postContacts", jsonContacts);
