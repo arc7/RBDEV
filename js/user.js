@@ -20,7 +20,7 @@ function getPhoneNumber() {
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
-	        //alert("contacts.length = " + contacts.length);
+	        alert("contacts.length = " + contacts.length);
 		
 		contacts_filtre=[];
 		
