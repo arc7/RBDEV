@@ -26,6 +26,7 @@ function storeJSON(action, obj, callback, needUserData) {
 	object.obj = obj;
 	object.callback = callback;
 	object.needUserData = needUserData;
+	//object.date = ;
 	
 	queueJSON = getStorageVal("queueJSON");
 	if(queueJSON) {
@@ -77,9 +78,10 @@ function postJson() {
 				console.log(urlToSend);
     
 				$.ajax({
-					type       : "GET",
+					type       : "POST",
 					url        : urlToSend,
 					data       : jsonTosend,
+					dataType : "json",
 					cache		: false,
 					success    : function(response) {
 						if (response.success == false) {
