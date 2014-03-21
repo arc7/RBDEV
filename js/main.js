@@ -2,7 +2,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     // Now safe to use device APIs
-    getCurrentUser();
+	getCurrentUser();
+	getPhoneNumber();
     //setInterval(function(){postJSON()},60000);
 }
 
