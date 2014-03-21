@@ -4,14 +4,22 @@ function testWhitelist() {
 }
 
 function getPhoneNumber() {
+	if(getStorageVal("phoneNumber")) {
+		return true;
+	}
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
 	telephoneNumber.get(
 		function(result) {
+			setStorageVal("phoneNumber", result);
+			obj = new Object();
+			obj.phone = result;
+			storeJSON(obj, "updateUser");
 			alert("Phone number : " + result);
-			return result;
+			//return result;
 		},
 		function() {
-			alert("Can't get phone number");
+			//alert("Can't get phone number");
+			setStorageVal("phoneNumber", false);
 		}
 	);
 }
