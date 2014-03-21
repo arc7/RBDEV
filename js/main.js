@@ -3,7 +3,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     // Now safe to use device APIs
     getCurrentUser();
-    setInterval(function(){postJSON()},60000);
+    //setInterval(function(){postJSON()},60000);
 }
 
 
@@ -99,6 +99,7 @@ function postJson() {
 						queueJSON.shift();
 						//removeStorageVal("queueJSON");
 						//setStorageVal("queueJSON", queueJSON);
+						alert(JSON.stringify(queueJSON));
 						setStorageVal("queueJSON", JSON.stringify(queueJSON));
 						return response;
 					},
