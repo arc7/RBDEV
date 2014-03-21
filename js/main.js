@@ -37,7 +37,7 @@ function storeJSON(action, obj, callback, needUserData) {
 		//setStorageVal("queueJSON", queueJSON);
 		setStorageVal("queueJSON", JSON.stringify(queueJSON));
 	}
-	alert(queueJSON);
+	alert(JSON.stringify(queueJSON));
 }
 
 //function postJson(action, obj, callback, needUserData) {
