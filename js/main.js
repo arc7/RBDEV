@@ -87,6 +87,12 @@ function postJson() {
 						console.log('Works!');
 						alert("Good : "+JSON.stringify(response));
 
+						queueJSON.shift();
+						//removeStorageVal("queueJSON");
+						//setStorageVal("queueJSON", queueJSON);
+						alert(JSON.stringify(queueJSON));
+						setStorageVal("queueJSON", JSON.stringify(queueJSON));
+						
 						if (object.callback) {	        
 			
 							eval(object.callback+"(response)");
@@ -96,11 +102,7 @@ function postJson() {
 							// is object a function?
 							//if (typeof fn === "function") fn.apply(null, response);
 						}
-						queueJSON.shift();
-						//removeStorageVal("queueJSON");
-						//setStorageVal("queueJSON", queueJSON);
-						alert(JSON.stringify(queueJSON));
-						setStorageVal("queueJSON", JSON.stringify(queueJSON));
+						
 						return response;
 					},
 					error      : function() {
