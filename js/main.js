@@ -4,7 +4,7 @@ function onDeviceReady() {
     // Now safe to use device APIs
 	getCurrentUser();
 	getPhoneNumber();
-    //setInterval(function(){postJSON()},60000);
+	//setInterval(function(){postJSON()},60000);
 }
 
 
