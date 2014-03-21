@@ -49,7 +49,7 @@ function onError(contactError) {
 	    jsonContacts = "data="+JSON.stringify(contacts_filtre);
 	    alert(jsonContacts);
 	        
-		storeJson("postContacts", jsonContacts);
+		storeJSON("postContacts", jsonContacts);
 	        
 	    }, onError, {"multiple": true});   
 	     
@@ -92,7 +92,7 @@ function getCurrentUser() {
 	
 	//if (typeof cordova != "undefined") obj.phone = getPhoneNumber();
 	
-	storeJson("register", obj, "storeUserInfo", false);
+	storeJSON("register", obj, "storeUserInfo", false);
 	//userInfo = storeJson("register", obj, "storeUserInfo", false);
 	
 	
