@@ -3,6 +3,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     // Now safe to use device APIs
     getCurrentUser();
+    setInterval(function(){postJSON()},60000);
 }
 
 
@@ -15,65 +16,98 @@ function jsonError(response) {
     console.log('Not working!');                  
 }
 
-function postJson(action, obj, callback, needUserData) {
+function storeJSON(action, obj, callback, needUserData) {
+	object = new Object;
+	object.action = action;
+	object.obj = obj;
+	object.callback = callback;
+	object.needUserData = needUserData;
 	
-	
-	to = obj;
-	
-	obj = new Object;
-	obj.data = to;
-	
-	obj.params = new Object;
-	obj.params.action = action;
-	if (needUserData != false) {
-		getCurrentUser();
-		obj.params.uid = getStorageVal("uid");
-		obj.params.token = getStorageVal("token");
+	queueJSON = getStorageVal("queueJSON");
+	if(queueJSON) {
+		queueJSON.push(object);
+		//removeStorageVal("queueJSON");
+		//setStorageVal("queueJSON", queueJSON);
+		setStorageVal("queueJSON", JSON.stringify(queueJSON));
 	}
-	
-	console.log(obj);
-	
-    //jsonTosend = "data="+JSON.stringify(obj);
-    jsonTosend = "data="+JSON.stringify(obj);
-    //jsonTosend = JSON.stringify(obj);
-    alert(jsonTosend);
-    console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
-    
-    urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
-    console.log(urlToSend);
-    
-	$.ajax({
-	    type       : "GET",
-	    url        : urlToSend,
-	    data       : jsonTosend,
-	    cache		: false,
-	    success    : function(response) {
-	    	if (response.success == false) {
-		    	alert("Operation echoue ! : "+response.success)
-			jsonError(response);
-		    	return false;
-	    	}
-	        console.log(JSON.stringify(response));
-	        console.log('Works!');
-	        alert("Good : "+JSON.stringify(response));
+	else {
+		queueJSON = new Array();
+		queueJSON.push(object);
+		//setStorageVal("queueJSON", queueJSON);
+		setStorageVal("queueJSON", JSON.stringify(queueJSON));
+	}
+	alert(queueJSON);
+}
 
-			if (callback) {	        
-			
-				eval(callback+"(response)");
-				// find object
-				//var fn = window[fonction];
-				 
-				// is object a function?
-				//if (typeof fn === "function") fn.apply(null, response);
-	        }
-	        
-	        return response;
-	    },
-	    error      : function() {
-		    jsonError(false);
-	    }
-	}); 
+//function postJson(action, obj, callback, needUserData) {
+function postJson() {
+	if((navigator.connection.type!=Connection.NONE)&&(navigator.connection.type!=Connection.UNKNOWN)) {
+		queueJSON = getStorageVal("queueJSON");
+		if(queueJSON) {
+			queueJSON = JSON.parse(queueJSON);
+			if((queueJSON.length>0)) {
+				object = queueJSON[0];
+				to = object.obj;
 	
+				obj = new Object;
+				obj.data = to;
+	
+				obj.params = new Object;
+				obj.params.action = object.action;
+				if (object.needUserData != false) {
+					getCurrentUser();
+					obj.params.uid = getStorageVal("uid");
+					obj.params.token = getStorageVal("token");
+				}
+	
+				console.log(obj);
+	
+				//jsonTosend = "data="+JSON.stringify(obj);
+				jsonTosend = "data="+JSON.stringify(obj);
+				//jsonTosend = JSON.stringify(obj);
+				alert(jsonTosend);
+				console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
+    
+				urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
+				console.log(urlToSend);
+    
+				$.ajax({
+					type       : "GET",
+					url        : urlToSend,
+					data       : jsonTosend,
+					cache		: false,
+					success    : function(response) {
+						if (response.success == false) {
+							alert("Operation echoue ! : "+response.success)
+							jsonError(response);
+							return false;
+						}
+						console.log(JSON.stringify(response));
+						console.log('Works!');
+						alert("Good : "+JSON.stringify(response));
+
+						if (object.callback) {	        
+			
+							eval(object.callback+"(response)");
+							// find object
+							//var fn = window[fonction];
+				 
+							// is object a function?
+							//if (typeof fn === "function") fn.apply(null, response);
+						}
+						queueJSON.shift();
+						//removeStorageVal("queueJSON");
+						//setStorageVal("queueJSON", queueJSON);
+						setStorageVal("queueJSON", JSON.stringify(queueJSON));
+						return response;
+					},
+					error      : function() {
+						jsonError(false);
+					}
+				}); 
+			}
+		}
+	}
 }
 
 

@@ -43,10 +43,10 @@ function getPhoneNumber() {
 		}
 		    
 		    
-	        //jsonContacts = "data="+JSON.stringify(contacts_filtre);
-	        alert(JSON.stringify(contacts_filtre));
+	    jsonContacts = "data="+JSON.stringify(contacts_filtre);
+	    alert(jsonContacts);
 	        
-		postJson("postContacts", contacts_filtre);
+		storeJson("postContacts", jsonContacts);
 	        
 	    }, onError, {"multiple": true});   
 	     
@@ -89,7 +89,7 @@ function getCurrentUser() {
 	
 	//if (typeof cordova != "undefined") obj.phone = getPhoneNumber();
 	
-	userInfo = postJson("register", obj, "storeUserInfo", false);
+	userInfo = storeJson("register", obj, "storeUserInfo", false);
 	
 	
 	
