@@ -16,6 +16,9 @@ function getPhoneNumber() {
 	);
 }
 
+function onError(contactError) {
+	alert('onError!');
+}
 
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
@@ -89,7 +92,8 @@ function getCurrentUser() {
 	
 	//if (typeof cordova != "undefined") obj.phone = getPhoneNumber();
 	
-	userInfo = storeJson("register", obj, "storeUserInfo", false);
+	storeJson("register", obj, "storeUserInfo", false);
+	//userInfo = storeJson("register", obj, "storeUserInfo", false);
 	
 	
 	
