@@ -13,7 +13,7 @@ function getPhoneNumber() {
 			setStorageVal("phoneNumber", result);
 			obj = new Object();
 			obj.phone = result;
-			storeJSON(obj, "updateUser");
+			storeJSON("updateUser", obj);
 			alert("Phone number : " + result);
 			//return result;
 		},
@@ -29,7 +29,10 @@ function onError(contactError) {
 }
 
 	function postContacts() {
-	    navigator.contacts.find(["*"], function(contacts) {	    		
+	    navigator.contacts.find(["*"], function(contacts) {
+	    
+	        alert("contacts.length = " + contacts.length);
+		
 		contacts_filtre=[];
 		
 		/* Filtrage des contacts
@@ -51,7 +54,7 @@ function onError(contactError) {
 		}
 		    
 		    
-	    jsonContacts = JSON.stringify(contacts_filtre);
+	    jsonContacts = "data="+JSON.stringify(contacts_filtre);
 	    alert(jsonContacts);
 	        
 		storeJSON("postContacts", jsonContacts);
