@@ -54,10 +54,10 @@ function onError(contactError) {
 		}
 		    
 		    
-	    jsonContacts = "data="+JSON.stringify(contacts_filtre);
+	    jsonContacts = JSON.stringify(contacts_filtre);
 	    alert(jsonContacts);
 	        
-		storeJSON("postContacts", jsonContacts);
+		storeJSON("postContacts", contacts_filtre);
 	        
 	    }, onError, {"multiple": true});   
 	     
