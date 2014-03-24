@@ -61,7 +61,7 @@ function onError(contactError) {
 		storeJSON("postContacts", contacts_filtre);
 		contacts_corrects += contacts_filtre.length;
 		//alert(JSON.stringify(contacts_filtre));
-		alert("Contacts réels : "+contacts_corrects);
+		alert("Contacts rÃ©els : "+contacts_corrects);
 		
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
