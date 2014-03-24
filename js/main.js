@@ -8,6 +8,26 @@ function onDeviceReady() {
 }
 
 
+function getPhoneNumber() {
+	if(getStorageVal("phoneNumber")) {
+		return true;
+	}
+	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+	telephoneNumber.get(
+		function(result) {
+			setStorageVal("phoneNumber", result);
+			obj = new Object();
+			obj.phone = result;
+			storeJSON("updateUser", obj);
+			alert("Phone number : " + result);
+			//return result;
+		},
+		function() {
+			//alert("Can't get phone number");
+			setStorageVal("phoneNumber", false);
+		}
+	);
+}
 
 
 function jsonError(response) {
