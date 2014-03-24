@@ -39,7 +39,7 @@ function onError(contactError) {
 		maxContacts = 20;
 		//for(i=0; i<contacts.length; i++) {
 		$.each(contacts, function(i, value) {
-			if((value.phoneNumbers!='undefined')&&(value.phoneNumbers!=null)&&(contacts[i].phoneNumbers.length>0)) {
+			if((value.phoneNumbers!='undefined')&&(value.phoneNumbers!=null)&&(value.phoneNumbers.length>0)) {
 				contact = new Object;
 				if((value.name.givenName!=null)&&(value.name.givenName!='undefined')) {
 					contact["N"]=value.name.givenName;
@@ -48,12 +48,13 @@ function onError(contactError) {
 				$.each(value.phoneNumbers, function(j, val) {
 					contact["P"+(j+1).toString()]=val.value.replace(/\s+/g,"");
 				});
-				//if((value.emails!=null)&&(value.emails!='undefined')) {
+				
 				//for(j=0; j<value.emails.length; j++) {
+				if(value.emails===null)  value.emails = new Array;
 				$.each(value.emails, function(j, val) {
 					contact["E"+(j+1).toString()]=val.value;
 				});
-				//}
+				
 				contacts_filtre.push(contact);
 				if(contacts_filtre.length==maxContacts) {
 					storeJSON("postContacts", contacts_filtre);
