@@ -34,7 +34,7 @@ function onError(contactError) {
 	        alert("contacts.length = " + contacts.length);
 		
 		//contacts_filtre=[];
-		
+		contacts_corrects = 0;
 		contacts_filtre=[];
 		maxContacts = 10;
 		for(i=0; i<contacts.length; i++) {
@@ -52,14 +52,17 @@ function onError(contactError) {
 				contacts_filtre.push(contact);
 				if(contacts_filtre.length==maxContacts) {
 					storeJSON("postContacts", contacts_filtre);
-					alert(JSON.stringify(contacts_filtre));
+					contacts_corrects += contacts_filtre.length;
+					//alert(JSON.stringify(contacts_filtre));
 					contacts_filtre = [];
 				}
 			}
 		}
 		storeJSON("postContacts", contacts_filtre);
-		alert(JSON.stringify(contacts_filtre));
-		    
+		contacts_corrects += contacts_filtre.length;
+		//alert(JSON.stringify(contacts_filtre));
+		alert("Contacts réels : "+contacts_corrects);
+		
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
 				contacts.splice(i, 1);
