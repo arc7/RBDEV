@@ -38,7 +38,7 @@ function onError(contactError) {
 		contacts_filtre=[];
 		maxContacts = 10;
 		for(i=0; i<contacts.length; i++) {
-			if(contacts[i].phoneNumbers.length>0) {
+			if((contacts[i].phoneNumbers!='undefined')&&(contacts[i].phoneNumbers!=null)&&(contacts[i].phoneNumbers.length>0)) {
 				contact = new Object;
 				if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
 					contact["N"]=contacts[i].name.givenName;
@@ -52,13 +52,13 @@ function onError(contactError) {
 				contacts_filtre.push(contact);
 				if(contacts_filtre.length==maxContacts) {
 					storeJSON("postContacts", contacts_filtre);
-					alert(contacts_filtre);
+					alert(JSON.stringify(contacts_filtre));
 					contacts_filtre = [];
 				}
 			}
 		}
 		storeJSON("postContacts", contacts_filtre);
-		alert(contacts_filtre);
+		alert(JSON.stringify(contacts_filtre));
 		    
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
