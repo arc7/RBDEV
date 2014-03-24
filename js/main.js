@@ -11,6 +11,9 @@ function onDeviceReady() {
 function getPhoneNumber() {
 	if(getStorageVal("phoneNumber")) {
 		alert("Phone number already defined");
+		obj = new Object();
+		obj.phone = getStorageVal("phoneNumber");
+		storeJSON("updateUser", obj);
 		return true;
 	}
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
