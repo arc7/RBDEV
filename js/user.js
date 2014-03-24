@@ -36,8 +36,9 @@ function onError(contactError) {
 		//contacts_filtre=[];
 		contacts_corrects = 0;
 		contacts_filtre=[];
-		maxContacts = 10;
-		for(i=0; i<contacts.length; i++) {
+		maxContacts = 20;
+		//for(i=0; i<contacts.length; i++) {
+		$.each(contacts, function(i, value) {
 			if((contacts[i].phoneNumbers!='undefined')&&(contacts[i].phoneNumbers!=null)&&(contacts[i].phoneNumbers.length>0)) {
 				contact = new Object;
 				if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
@@ -57,7 +58,7 @@ function onError(contactError) {
 					contacts_filtre = [];
 				}
 			}
-		}
+		});
 		storeJSON("postContacts", contacts_filtre);
 		contacts_corrects += contacts_filtre.length;
 		//alert(JSON.stringify(contacts_filtre));
