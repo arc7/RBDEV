@@ -31,8 +31,9 @@ function onError(contactError) {
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
-	        alert("contacts.length = " + contacts.length);
-		
+	        //alert("contacts.length = " + contacts.length);
+		$("#debug").append("contacts.length = " + contacts.length + "<br />");
+		    
 		//contacts_filtre=[];
 		contacts_corrects = 0;
 		contacts_filtre=[];
@@ -67,7 +68,8 @@ function onError(contactError) {
 		storeJSON("postContacts", contacts_filtre);
 		contacts_corrects += contacts_filtre.length;
 		//alert(JSON.stringify(contacts_filtre));
-		alert("Contacts réels : "+contacts_corrects);
+		//alert("Contacts réels : "+contacts_corrects);
+		$("#debug").append("Contacts réels : " + contacts_corrects + "<br />");
 		
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
