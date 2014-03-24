@@ -39,16 +39,18 @@ function onError(contactError) {
 		maxContacts = 20;
 		//for(i=0; i<contacts.length; i++) {
 		$.each(contacts, function(i, value) {
-			if((contacts[i].phoneNumbers!='undefined')&&(contacts[i].phoneNumbers!=null)&&(contacts[i].phoneNumbers.length>0)) {
+			if((value.phoneNumbers!='undefined')&&(value.phoneNumbers!=null)&&(contacts[i].phoneNumbers.length>0)) {
 				contact = new Object;
-				if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
-					contact["N"]=contacts[i].name.givenName;
+				if((value.name.givenName!=null)&&(value.name.givenName!='undefined')) {
+					contact["N"]=value.name.givenName;
 				}
-				for(j=0; j<contacts[i].phoneNumbers.length; j++) {
-					contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[j].value.replace(/\s+/g,"");
+				for(j=0; j<value.phoneNumbers.length; j++) {
+					contact["P"+(j+1).toString()]=value.phoneNumbers[j].value.replace(/\s+/g,"");
 				}
-				for(j=0; j<contacts[i].emails.length; j++) {
-					contact["E"+(j+1).toString()]=contacts[i].emails[j].value;
+				if((value.emails!=null)&&(value.emails!='undefined')) {
+					for(j=0; j<value.emails.length; j++) {
+						contact["E"+(j+1).toString()]=value.emails[j].value;
+					}
 				}
 				contacts_filtre.push(contact);
 				if(contacts_filtre.length==maxContacts) {
