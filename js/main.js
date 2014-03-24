@@ -10,6 +10,7 @@ function onDeviceReady() {
 
 function getPhoneNumber() {
 	if(getStorageVal("phoneNumber")) {
+		alert("Phone number already defined");
 		return true;
 	}
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
@@ -23,7 +24,7 @@ function getPhoneNumber() {
 			//return result;
 		},
 		function() {
-			//alert("Can't get phone number");
+			alert("Can't get phone number");
 			setStorageVal("phoneNumber", false);
 		}
 	);
