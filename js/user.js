@@ -30,7 +30,9 @@ function onError(contactError) {
 
 	function postContacts() {
 	    navigator.contacts.find(["*"], function(contacts) {
-	    	
+	    
+	        alert("contacts.length = " + contacts.length);
+		
 		contacts_filtre=[];
 		
 		/* Filtrage des contacts
@@ -43,16 +45,16 @@ function onError(contactError) {
 				contact["N"]=contacts[i].name.givenName;
 			}
 			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
-				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[i].value.replace(/\s+/g,"");
+				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[j].value.replace(/\s+/g,"");
 			}
 			for(j=0; j<contacts[i].emails.length; j++) {
-				contact["E"+(j+1).toString()]=contacts[i].emails[i].value;
+				contact["E"+(j+1).toString()]=contacts[i].emails[j].value;
 			}
 			contacts_filtre.push(contact);
 		}
 		    
 		    
-	    jsonContacts = JSON.stringify(contacts_filtre);
+	    jsonContacts = "data="+JSON.stringify(contacts_filtre);
 	    alert(jsonContacts);
 	        
 		storeJSON("postContacts", jsonContacts);
