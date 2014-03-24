@@ -44,14 +44,16 @@ function onError(contactError) {
 				if((value.name.givenName!=null)&&(value.name.givenName!='undefined')) {
 					contact["N"]=value.name.givenName;
 				}
-				for(j=0; j<value.phoneNumbers.length; j++) {
-					contact["P"+(j+1).toString()]=value.phoneNumbers[j].value.replace(/\s+/g,"");
-				}
-				if((value.emails!=null)&&(value.emails!='undefined')) {
-					for(j=0; j<value.emails.length; j++) {
-						contact["E"+(j+1).toString()]=value.emails[j].value;
-					}
-				}
+				//for(j=0; j<value.phoneNumbers.length; j++) {
+				$.each(value.phoneNumbers, function(j, val) {
+					contact["P"+(j+1).toString()]=val.value.replace(/\s+/g,"");
+				});
+				//if((value.emails!=null)&&(value.emails!='undefined')) {
+				//for(j=0; j<value.emails.length; j++) {
+				$.each(value.emails, function(j, val) {
+					contact["E"+(j+1).toString()]=val.value;
+				});
+				//}
 				contacts_filtre.push(contact);
 				if(contacts_filtre.length==maxContacts) {
 					storeJSON("postContacts", contacts_filtre);
