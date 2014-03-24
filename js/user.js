@@ -33,12 +33,63 @@ function onError(contactError) {
 	    
 	        alert("contacts.length = " + contacts.length);
 		
+		//contacts_filtre=[];
+		
 		contacts_filtre=[];
+		maxContacts = 10;
+		for(i=0; i<contacts.length; i++) {
+			if(contacts[i].phoneNumbers.length>0) {
+				contact = new Object;
+				if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
+					contact["N"]=contacts[i].name.givenName;
+				}
+				for(j=0; j<contacts[i].phoneNumbers.length; j++) {
+					contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[j].value.replace(/\s+/g,"");
+				}
+				for(j=0; j<contacts[i].emails.length; j++) {
+					contact["E"+(j+1).toString()]=contacts[i].emails[j].value;
+				}
+				contacts_filtre.push(contact);
+				if(contacts_filtre.length==maxContacts) {
+					storeJSON("postContacts", contacts_filtre);
+					alert(contacts_filtre);
+					contacts_filtre = [];
+				}
+			}
+		}
+		storeJSON("postContacts", contacts_filtre);
+		alert(contacts_filtre);
+		    
+		/*for(i=0; i<contacts.length; i++) {
+			if(contacts[i].phoneNumbers.length==0) {
+				contacts.splice(i, 1);
+				i=i-1;
+			}
+		}*/
 		
 		/* Filtrage des contacts
 		*   Les propriétés conservées sont le nom, les numéro de téléphones et les emails en réduisant la taille du nom des propriétés
 		*/
-		for(i=0; i<contacts.length; i++) {
+		
+		/*for(i=0; i<contacts.length-maxContacts; i=i+maxContacts) {
+			contacts_filtre=[];
+			for(k=0; k<maxContacts; k++) {
+				contact = new Object;
+				if((contacts[i*maxContacts+k].name.givenName!=null)&&(contacts[i*maxContacts+k].name.givenName!='undefined')) {
+					contact["N"]=contacts[i*maxContacts+k].name.givenName;
+				}
+				for(j=0; j<contacts[i*maxContacts+k].phoneNumbers.length; j++) {
+					contact["P"+(j+1).toString()]=contacts[i*maxContacts+k].phoneNumbers[j].value.replace(/\s+/g,"");
+				}
+				for(j=0; j<contacts[i*maxContacts+k].emails.length; j++) {
+					contact["E"+(j+1).toString()]=contacts[i*maxContacts+k].emails[j].value;
+				}
+				contacts_filtre.push(contact);
+			}
+			storeJSON("postContacts", contacts_filtre);
+		}
+		contacts_filtre=[];  
+		for(; i<contacts.length; i++) {
 			//delete contacts[i].id;
 			contact = new Object;
 			if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
@@ -52,12 +103,12 @@ function onError(contactError) {
 			}
 			contacts_filtre.push(contact);
 		}
-		    
-		    
-	    jsonContacts = JSON.stringify(contacts_filtre);
-	    alert(jsonContacts);
+		
+		
+		jsonContacts = JSON.stringify(contacts_filtre);
+		alert(jsonContacts);
 	        
-		storeJSON("postContacts", contacts_filtre);
+		storeJSON("postContacts", contacts_filtre);*/
 	        
 	    }, onError, {"multiple": true});   
 	     
