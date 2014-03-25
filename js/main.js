@@ -7,6 +7,15 @@ function onDeviceReady() {
 	//setInterval(function(){postJSON()},60000);
 }
 
+function processQueue(count) {
+	/*if(count == ) {
+		do {
+			postJSON();
+			queueJSON = getStorageVal("queueJSON");
+			if(queueJSON)
+		} while();
+	}*/
+}
 
 function getPhoneNumber() {
 	if(getStorageVal("phoneNumber")) {

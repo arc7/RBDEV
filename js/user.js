@@ -36,12 +36,14 @@ function onError(contactError) {
 		    
 		//contacts_filtre=[];
 		contacts_corrects = 0;
-		contacts_filtre=[];
-		maxContacts = 20;
+		contacts_filtre = [];
+		contacts_reels = [];
+		maxContacts = 100;
 		//for(i=0; i<contacts.length; i++) {
 		$.each(contacts, function(i, value) {
 			if((value.phoneNumbers!='undefined')&&(value.phoneNumbers!=null)&&(value.phoneNumbers.length>0)) {
 				contact = new Object;
+				contact["ID"]=value.id;
 				if((value.name.givenName!=null)&&(value.name.givenName!='undefined')) {
 					contact["N"]=value.name.givenName;
 				}
@@ -57,6 +59,7 @@ function onError(contactError) {
 				});
 				
 				contacts_filtre.push(contact);
+				contacts_reels.push(contact);
 				if(contacts_filtre.length==maxContacts) {
 					storeJSON("postContacts", contacts_filtre);
 					contacts_corrects += contacts_filtre.length;
@@ -70,6 +73,21 @@ function onError(contactError) {
 		//alert(JSON.stringify(contacts_filtre));
 		//alert("Contacts réels : "+contacts_corrects);
 		$("#debug").append("Contacts réels : " + contacts_corrects + "<br />");
+		
+		storeJSON("getContactsMatch", new Object, "displayMatchingContacts");
+		
+		contacts_reels.sort(function(a,b) {
+			if (a.N < b.N)
+				return -1;
+			if (a.N > b.N)
+				return 1;
+			return 0;
+		});
+		
+		$.each(contacts_reels, function(index, value) {
+			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.N + "</span>");
+		});
+		//processQueue();
 		
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
