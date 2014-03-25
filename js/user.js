@@ -85,7 +85,7 @@ function onError(contactError) {
 		});
 		
 		$.each(contacts_reels, function(index, value) {
-			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.N + "</span>");
+			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.ID + " : " + value.N + "</span><br />");
 		});
 		//processQueue();
 		
