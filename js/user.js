@@ -47,7 +47,7 @@ function onError(contactError) {
 				}
 				//for(j=0; j<value.phoneNumbers.length; j++) {
 				$.each(value.phoneNumbers, function(j, val) {
-					contact["P"+(j+1).toString()]=val.value.replace(/\s+/g,"");
+					contact["P"+(j+1).toString()]=val.value.replace(/[\s\.()]+/g,"").replace(/\+/g,"00");
 				});
 				
 				//for(j=0; j<value.emails.length; j++) {
