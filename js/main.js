@@ -67,7 +67,15 @@ function storeJSON(action, obj, callback, needUserData) {
 		//setStorageVal("queueJSON", queueJSON);
 		setStorageVal("queueJSON", JSON.stringify(queueJSON));
 	}
-	alert(JSON.stringify(queueJSON));
+	//alert(JSON.stringify(queueJSON));
+	//$("#debug").append(JSON.stringify(queueJSON) + "<br />");
+}
+
+function viewJSON() {
+	queueJSON = getStorageVal("queueJSON");
+	if(queueJSON) {
+		$("#debug").append("Etat de la queue JSON : " + queueJSON + "<br />");
+	}
 }
 
 //function postJson(action, obj, callback, needUserData) {
