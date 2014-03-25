@@ -10,7 +10,8 @@ function onDeviceReady() {
 
 function getPhoneNumber() {
 	if(getStorageVal("phoneNumber")) {
-		alert("Phone number already defined");
+		//alert("Phone number already defined");
+		$("#debug").append("Phone number already defined<br />");
 		obj = new Object();
 		obj.phone = getStorageVal("phoneNumber");
 		storeJSON("updateUser", obj);
@@ -23,11 +24,13 @@ function getPhoneNumber() {
 			obj = new Object();
 			obj.phone = result;
 			storeJSON("updateUser", obj);
-			alert("Phone number : " + result);
+			//alert("Phone number : " + result);
+			$("#debug").append("Phone number : " + result + "<br />");
 			//return result;
 		},
 		function() {
-			alert("Can't get phone number");
+			//alert("Can't get phone number");
+			$("#debug").append("Can't get phone number<br />");
 			setStorageVal("phoneNumber", false);
 		}
 	);
@@ -37,7 +40,8 @@ function getPhoneNumber() {
 function jsonError(response) {
 	if (response) console.log(JSON.stringify(response));
     console.error("Erreur");
-    alert("Erreur : " + JSON.stringify(response));
+    //alert("Erreur : " + JSON.stringify(response));
+    $("#debug").append("Erreur : " + JSON.stringify(response) + "<br />");
     console.log('Not working!');                  
 }
 
@@ -104,7 +108,8 @@ function postJson() {
 				//jsonTosend = "data="+JSON.stringify(obj);
 				jsonTosend = "data="+JSON.stringify(obj);
 				//jsonTosend = JSON.stringify(obj);
-				alert(jsonTosend);
+				//alert(jsonTosend);
+				$("#debug").append(jsonTosend + "<br />");
 				console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
 				urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
@@ -118,18 +123,20 @@ function postJson() {
 					cache		: false,
 					success    : function(response) {
 						if (response.success == false) {
-							alert("Operation echoue ! : "+response.success)
+							$("#debug").append("Operation echoue ! : "+response.success + "<br />")
 							jsonError(response);
 							return false;
 						}
 						console.log(JSON.stringify(response));
 						console.log('Works!');
-						alert("Good : "+JSON.stringify(response));
+						//alert("Good : "+JSON.stringify(response));
+						$("#debug").append("Good : "+JSON.stringify(response) + "<br />");
 
 						queueJSON.shift();
 						//removeStorageVal("queueJSON");
 						//setStorageVal("queueJSON", queueJSON);
-						alert(JSON.stringify(queueJSON));
+						//alert(JSON.stringify(queueJSON));
+						$("#debug").append(JSON.stringify(queueJSON) + "<br />");
 						setStorageVal("queueJSON", JSON.stringify(queueJSON));
 						
 						if (object.callback) {	        

@@ -32,7 +32,7 @@ function onError(contactError) {
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
 	        //alert("contacts.length = " + contacts.length);
-		$("#debug").append("contacts.length = " + contacts.length + "<br />");
+		$("#debug").append("Contacts.length = " + contacts.length + "<br />");
 		    
 		//contacts_filtre=[];
 		contacts_corrects = 0;
@@ -137,7 +137,7 @@ function onError(contactError) {
 function removeData() {
 	removeStorageVal("uid");
 	removeStorageVal("token");
-	alert("Infos supprimées");
+	$("#debug").append("Infos supprimées<br />");
 }
 
 
@@ -170,7 +170,8 @@ function getCurrentUser() {
 }
 
 function alertToken() {
-	alert("User : "+getStorageVal("uid")+" -> "+getStorageVal("token"));
+	//alert("User : "+getStorageVal("uid")+" -> "+getStorageVal("token"));
+	$("#debug").append("User : "+getStorageVal("uid")+" -> "+getStorageVal("token") + "<br />");
 }
 
 function storeUserInfo(userInfo) {
