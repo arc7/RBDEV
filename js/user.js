@@ -29,6 +29,20 @@ function onError(contactError) {
 }
 
 	function postContacts() {
+		
+		contacts_reels = [];
+		obj = new Object;
+		obj["ID"] = "1";
+		obj["N"] = "Test1";
+		contacts_reels.push(obj);
+		obj = new Object;
+		obj["ID"] = "2";
+		obj["N"] = "Test2";
+		contacts_reels.push(obj);
+		$.each(contacts_reels, function(index, value) {
+			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.ID + " : " + value.N + "</span><br />");
+		});
+		
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
 	        //alert("contacts.length = " + contacts.length);
@@ -85,10 +99,13 @@ function onError(contactError) {
 		});
 		
 		$.each(contacts_reels, function(index, value) {
-			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.ID + " : " + value.N + "</span><br />");
+			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.N + "</span><br />");
 		});
 		//processQueue();
 		
+		ids = new Array();
+		ids.push(2);
+		displayMatchingContacts(ids);
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
 				contacts.splice(i, 1);

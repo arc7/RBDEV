@@ -7,14 +7,35 @@ function onDeviceReady() {
 	//setInterval(function(){postJSON()},60000);
 }
 
+var remainingPosts = 0;
+
 function processQueue(count) {
-	/*if(count == ) {
-		do {
+	if(count) {
+		remainingPosts = count;
+	}
+	else {
+		queueJSON = getStorageVal("queueJSON");
+		if(queueJSON) {
+			queueJSON = JSON.parse(queueJSON);
+		}
+		else {
+			queueJSON = new Array;
+		}
+		remainingPosts = queueJSON.length;
+	}
+		
+	//if(count == ) {
+	/*	do {
 			postJSON();
 			queueJSON = getStorageVal("queueJSON");
-			if(queueJSON)
-		} while();
-	}*/
+			if(queueJSON) {
+				queueJSON = JSON.parse(queueJSON);
+			}
+			else {
+				queueJSON = new Array;
+			}
+		} while(queueJSON.length > 0);*/
+	//}
 }
 
 function getPhoneNumber() {
@@ -84,6 +105,12 @@ function storeJSON(action, obj, callback, needUserData) {
 	//$("#debug").append(JSON.stringify(queueJSON) + "<br />");
 }
 
+function displayMatchingContacts(contacts) {
+	$.each(contacts, function(index, value) {
+		$("#contact" + value).addClass("contactUser");
+	});
+}
+
 function viewJSON() {
 	queueJSON = getStorageVal("queueJSON");
 	if(queueJSON) {
@@ -142,6 +169,10 @@ function postJson() {
 						$("#debug").append("Good : "+JSON.stringify(response) + "<br />");
 
 						queueJSON.shift();
+						if(remainingPosts > 0) {
+							remainingPosts -= 1;
+							postJson();
+						}
 						//removeStorageVal("queueJSON");
 						//setStorageVal("queueJSON", queueJSON);
 						//alert(JSON.stringify(queueJSON));
