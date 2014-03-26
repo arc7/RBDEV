@@ -30,7 +30,7 @@ function onError(contactError) {
 
 	function postContacts() {
 		
-		contacts_reels = [];
+		/*contacts_reels = [];
 		obj = new Object;
 		obj["ID"] = "1";
 		obj["N"] = "Test1";
@@ -41,7 +41,7 @@ function onError(contactError) {
 		contacts_reels.push(obj);
 		$.each(contacts_reels, function(index, value) {
 			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.ID + " : " + value.N + "</span><br />");
-		});
+		});*/
 		
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
