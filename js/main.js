@@ -54,10 +54,10 @@ function getPhoneNumber() {
 		function(result) {
 			setStorageVal("phoneNumber", result);
 			obj = new Object();
-			obj.phone = result.replace(/[\s\.()]+/g,"").replace(/\+/g,"00");;
+			obj.phone = result.replace(/[\s\.()]+/g,"").replace(/\+/g,"00");
 			storeJSON("updateUser", obj);
 			//alert("Phone number : " + result);
-			$("#debug").append("Phone number : " + result.replace(/[\s\.()]+/g,"").replace(/\+/g,"00"); + "<br />");
+			$("#debug").append("Phone number : " + result.replace(/[\s\.()]+/g,"").replace(/\+/g,"00") + "<br />");
 			//return result;
 		},
 		function() {
