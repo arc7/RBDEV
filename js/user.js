@@ -58,8 +58,8 @@ function onError(contactError) {
 			if((value.phoneNumbers!='undefined')&&(value.phoneNumbers!=null)&&(value.phoneNumbers.length>0)) {
 				contact = new Object;
 				contact["ID"]=value.id;
-				if((value.name.givenName!=null)&&(value.name.givenName!='undefined')) {
-					contact["N"]=value.name.givenName;
+				if((value.name.familyName!=null)&&(value.name.familyName!='undefined')) {
+					contact["N"]=value.name.familyName;
 				}
 				//for(j=0; j<value.phoneNumbers.length; j++) {
 				$.each(value.phoneNumbers, function(j, val) {
@@ -73,7 +73,7 @@ function onError(contactError) {
 				});
 				
 				contacts_filtre.push(contact);
-				contacts_reels.push(contact);
+				contacts_reels.push(value);
 				if(contacts_filtre.length==maxContacts) {
 					storeJSON("postContacts", contacts_filtre);
 					contacts_corrects += contacts_filtre.length;
@@ -99,7 +99,7 @@ function onError(contactError) {
 		});
 		
 		$.each(contacts_reels, function(index, value) {
-			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.N + "</span><br />");
+			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.familyName + " " + value.givenName + "</span><br />");
 		});
 		queueJSON = getStorageVal("queueJSON");
 		if(queueJSON) {
