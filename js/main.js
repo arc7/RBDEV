@@ -68,6 +68,9 @@ function getPhoneNumber() {
 	);
 }
 
+function clearPhoneNumber() {
+	removeStorageVal("phoneNumber");
+}
 
 function jsonError(response) {
 	if (response) console.log(JSON.stringify(response));
