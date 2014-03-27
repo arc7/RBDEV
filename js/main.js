@@ -176,10 +176,7 @@ function postJson() {
 						queueJSON.shift();
 						$("#debug").append(JSON.stringify(queueJSON) + "<br />");
 						setStorageVal("queueJSON", JSON.stringify(queueJSON));
-						if(remainingPosts > 0) {
-							remainingPosts -= 1;
-							postJson();
-						}
+						
 						//removeStorageVal("queueJSON");
 						//setStorageVal("queueJSON", queueJSON);
 						//alert(JSON.stringify(queueJSON));
@@ -192,6 +189,11 @@ function postJson() {
 				 
 							// is object a function?
 							//if (typeof fn === "function") fn.apply(null, response);
+						}
+						
+						if(remainingPosts > 0) {
+							remainingPosts -= 1;
+							postJson();
 						}
 						
 						return response;
