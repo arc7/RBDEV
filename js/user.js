@@ -59,7 +59,12 @@ function onError(contactError) {
 				contact = new Object;
 				contact["ID"]=value.id;
 				if((value.name.familyName!=null)&&(value.name.familyName!='undefined')) {
-					contact["N"]=value.name.familyName;
+					if(value.name.familyName != "") {
+						contact["N"] = value.name.familyName;
+					}
+					else if((value.name.givenName!=null)&&(value.name.givenName!='undefined')) {
+						contact["N"] = value.name.givenName;
+					}
 				}
 				//for(j=0; j<value.phoneNumbers.length; j++) {
 				$.each(value.phoneNumbers, function(j, val) {
