@@ -7,12 +7,12 @@ function onDeviceReady() {
 	//setInterval(function(){postJSON()},60000);
 }
 
-var remainingPosts = 0;
+remainingPosts = 0;
 
 function processQueue(count) {
-	if(count) {
+	//if(count) {
 		remainingPosts = count;
-	}
+	/*}
 	else {
 		queueJSON = getStorageVal("queueJSON");
 		if(queueJSON) {
@@ -22,7 +22,7 @@ function processQueue(count) {
 			queueJSON = new Array;
 		}
 		remainingPosts = queueJSON.length;
-	}
+	}*/
 		
 	//if(count == ) {
 	/*	do {
