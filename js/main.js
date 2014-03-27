@@ -26,7 +26,7 @@ function processQueue(count) {
 		
 	//if(count == ) {
 	/*	do {
-			postJSON();
+			postJson();
 			queueJSON = getStorageVal("queueJSON");
 			if(queueJSON) {
 				queueJSON = JSON.parse(queueJSON);
@@ -36,6 +36,8 @@ function processQueue(count) {
 			}
 		} while(queueJSON.length > 0);*/
 	//}
+	
+	postJson();
 }
 
 function getPhoneNumber() {

@@ -101,11 +101,11 @@ function onError(contactError) {
 		$.each(contacts_reels, function(index, value) {
 			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.N + "</span><br />");
 		});
-		//processQueue();
+		processQueue();
 		
-		ids = new Array();
+		/*ids = new Array();
 		ids.push(2);
-		displayMatchingContacts(ids);
+		displayMatchingContacts(ids);*/
 		/*for(i=0; i<contacts.length; i++) {
 			if(contacts[i].phoneNumbers.length==0) {
 				contacts.splice(i, 1);
