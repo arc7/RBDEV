@@ -99,7 +99,7 @@ function onError(contactError) {
 		});
 		
 		$.each(contacts_reels, function(index, value) {
-			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.familyName + " " + value.givenName + "</span><br />");
+			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.familyName + " " + value.name.givenName + "</span><br />");
 		});
 		queueJSON = getStorageVal("queueJSON");
 		if(queueJSON) {
