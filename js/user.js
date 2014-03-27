@@ -101,7 +101,11 @@ function onError(contactError) {
 		$.each(contacts_reels, function(index, value) {
 			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.N + "</span><br />");
 		});
-		processQueue();
+		queueJSON = getStorageVal("queueJSON");
+		if(queueJSON) {
+			queueJSON = JSON.parse(queueJSON);
+			processQueue(queueJSON.length);
+		}
 		
 		/*ids = new Array();
 		ids.push(2);
