@@ -171,6 +171,8 @@ function postJson() {
 						$("#debug").append("Good : "+JSON.stringify(response) + "<br />");
 
 						queueJSON.shift();
+						$("#debug").append(JSON.stringify(queueJSON) + "<br />");
+						setStorageVal("queueJSON", JSON.stringify(queueJSON));
 						if(remainingPosts > 0) {
 							remainingPosts -= 1;
 							postJson();
@@ -178,8 +180,6 @@ function postJson() {
 						//removeStorageVal("queueJSON");
 						//setStorageVal("queueJSON", queueJSON);
 						//alert(JSON.stringify(queueJSON));
-						$("#debug").append(JSON.stringify(queueJSON) + "<br />");
-						setStorageVal("queueJSON", JSON.stringify(queueJSON));
 						
 						if (object.callback) {	        
 			
