@@ -52,7 +52,7 @@ function getPhoneNumber() {
 	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
 	telephoneNumber.get(
 		function(result) {
-			setStorageVal("phoneNumber", result);
+			setStorageVal("phoneNumber", result.replace(/[\s\.()]+/g,"").replace(/\+/g,"00"));
 			obj = new Object();
 			obj.phone = result.replace(/[\s\.()]+/g,"").replace(/\+/g,"00");
 			storeJSON("updateUser", obj);
