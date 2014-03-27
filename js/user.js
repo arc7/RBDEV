@@ -96,9 +96,9 @@ function onError(contactError) {
 		storeJSON("getContactsMatch", new Object, "displayMatchingContacts");
 		
 		contacts_reels.sort(function(a,b) {
-			if (a.N < b.N)
+			if (a.familyName < b.familyName)
 				return -1;
-			if (a.N > b.N)
+			if (a.familyName > b.familyName)
 				return 1;
 			return 0;
 		});
