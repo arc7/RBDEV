@@ -36,6 +36,7 @@
 
     
     <gap:splash src="img/splash.jpg" />
+	<gap:splash gap:platform="winphone" src="img/splash.jpg" />
 	<gap:plugin name="org.apache.cordova.core.console" /> 
 	<gap:plugin name="org.apache.cordova.core.contacts" /> 
 	<gap:plugin name="org.apache.cordova.core.device" /> 
