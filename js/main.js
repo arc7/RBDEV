@@ -10,6 +10,7 @@ function onDeviceReady() {
 remainingPosts = 0;
 
 function processQueue(count) {
+	$("#debug").text()="";
 	//if(count) {
 		remainingPosts = count;
 	/*}
@@ -117,6 +118,7 @@ function displayMatchingContacts(contacts) {
 }
 
 function viewJSON() {
+	$("#debug").text()="";
 	queueJSON = getStorageVal("queueJSON");
 	if(queueJSON) {
 		$("#debug").append("Etat de la queue JSON : " + queueJSON + "<br />");
@@ -206,11 +208,6 @@ function postJson() {
 		}
 	}
 }
-
-
-
-
-
 
 function getStorageVal(key) {
 	value = window.localStorage.getItem(key);

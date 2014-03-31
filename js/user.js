@@ -3,45 +3,19 @@ function testWhitelist() {
 	var ref = window.open('http://rb.cerivan.com/app/call/post.php?g=yes&data={%22data%22:{%22uuid%22:%223a6fdb5b840fe3ac%22},%22params%22:{%22action%22:%22register%22}}', '_blank', 'location=yes');
 }
 
-/*function getPhoneNumber() {
-	if(getStorageVal("phoneNumber")) {
-		return true;
-	}
-	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-	telephoneNumber.get(
-		function(result) {
-			setStorageVal("phoneNumber", result);
-			obj = new Object();
-			obj.phone = result;
-			storeJSON("updateUser", obj);
-			alert("Phone number : " + result);
-			//return result;
-		},
-		function() {
-			//alert("Can't get phone number");
-			setStorageVal("phoneNumber", false);
-		}
-	);
-}*/
-
 function onError(contactError) {
 	alert('onError!');
 }
 
+function getMatchingString(contact) {
+	phoneNumber = contact.phoneNumbers[0].value.replace(/[\s\.()]+/g,"").replace(/\+/g,"00");
+	name = contact.name.familyName;
+	// Combine les six derniers chiffres du numéro de téléphone avec les deux premiers caractères du nom
+	string = phoneNumber.substr(phoneNumber.length-6) + name.substr(0, 2);
+	return string;
+}
+
 	function postContacts() {
-		
-		/*contacts_reels = [];
-		obj = new Object;
-		obj["ID"] = "1";
-		obj["N"] = "Test1";
-		contacts_reels.push(obj);
-		obj = new Object;
-		obj["ID"] = "2";
-		obj["N"] = "Test2";
-		contacts_reels.push(obj);
-		$.each(contacts_reels, function(index, value) {
-			$("#contacts").append("<span id=\"contact" + value.ID + "\">" + value.ID + " : " + value.N + "</span><br />");
-		});*/
 		
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
@@ -96,74 +70,22 @@ function onError(contactError) {
 		storeJSON("getContactsMatch", new Object, "displayMatchingContacts");
 		
 		contacts_reels.sort(function(a,b) {
-			if (a.familyName < b.familyName)
+			if (a.name.formatted < b.name.formatted)
 				return -1;
-			if (a.familyName > b.familyName)
+			if (a.name.formatted > b.name.formatted)
 				return 1;
 			return 0;
 		});
 		
 		$.each(contacts_reels, function(index, value) {
-			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.familyName + " " + value.name.givenName + "</span><br />");
+			//$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.familyName + " " + value.name.givenName + "</span><br />");
+			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
 		});
 		queueJSON = getStorageVal("queueJSON");
 		if(queueJSON) {
 			queueJSON = JSON.parse(queueJSON);
 			processQueue(queueJSON.length);
 		}
-		
-		/*ids = new Array();
-		ids.push(2);
-		displayMatchingContacts(ids);*/
-		/*for(i=0; i<contacts.length; i++) {
-			if(contacts[i].phoneNumbers.length==0) {
-				contacts.splice(i, 1);
-				i=i-1;
-			}
-		}*/
-		
-		/* Filtrage des contacts
-		*   Les propriétés conservées sont le nom, les numéro de téléphones et les emails en réduisant la taille du nom des propriétés
-		*/
-		
-		/*for(i=0; i<contacts.length-maxContacts; i=i+maxContacts) {
-			contacts_filtre=[];
-			for(k=0; k<maxContacts; k++) {
-				contact = new Object;
-				if((contacts[i*maxContacts+k].name.givenName!=null)&&(contacts[i*maxContacts+k].name.givenName!='undefined')) {
-					contact["N"]=contacts[i*maxContacts+k].name.givenName;
-				}
-				for(j=0; j<contacts[i*maxContacts+k].phoneNumbers.length; j++) {
-					contact["P"+(j+1).toString()]=contacts[i*maxContacts+k].phoneNumbers[j].value.replace(/\s+/g,"");
-				}
-				for(j=0; j<contacts[i*maxContacts+k].emails.length; j++) {
-					contact["E"+(j+1).toString()]=contacts[i*maxContacts+k].emails[j].value;
-				}
-				contacts_filtre.push(contact);
-			}
-			storeJSON("postContacts", contacts_filtre);
-		}
-		contacts_filtre=[];  
-		for(; i<contacts.length; i++) {
-			//delete contacts[i].id;
-			contact = new Object;
-			if((contacts[i].name.givenName!=null)&&(contacts[i].name.givenName!='undefined')) {
-				contact["N"]=contacts[i].name.givenName;
-			}
-			for(j=0; j<contacts[i].phoneNumbers.length; j++) {
-				contact["P"+(j+1).toString()]=contacts[i].phoneNumbers[j].value.replace(/\s+/g,"");
-			}
-			for(j=0; j<contacts[i].emails.length; j++) {
-				contact["E"+(j+1).toString()]=contacts[i].emails[j].value;
-			}
-			contacts_filtre.push(contact);
-		}
-		
-		
-		jsonContacts = JSON.stringify(contacts_filtre);
-		alert(jsonContacts);
-	        
-		storeJSON("postContacts", contacts_filtre);*/
 	        
 	    }, onError, {"multiple": true});   
 	     
