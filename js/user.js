@@ -77,10 +77,19 @@ function getMatchingString(contact) {
 			return 0;
 		});
 		
-		$.each(contacts_reels, function(index, value) {
+		/*$.each(contacts_reels, function(index, value) {
 			//$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.familyName + " " + value.name.givenName + "</span><br />");
 			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
+		});*/
+		first = "";
+		$.each(contacts_reels, function(index, value) {
+			p = value.name.formatted.substr(0,1);
+			if(p != first) {
+				$("#contacts").append(p.toUpperCase() + "<br />");
+			}
+			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
 		});
+
 		queueJSON = getStorageVal("queueJSON");
 		if(queueJSON) {
 			queueJSON = JSON.parse(queueJSON);
