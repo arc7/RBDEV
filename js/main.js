@@ -112,7 +112,7 @@ function storeJSON(action, obj, callback, needUserData) {
 }
 
 function displayMatchingContacts(contacts) {
-	$.each(contacts, function(index, value) {
+	$.each(contacts.data, function(index, value) {
 		$("#contact" + value).addClass("contactUser");
 	});
 }
