@@ -16,7 +16,7 @@ function getMatchingString(contact) {
 }
 
 	function postContacts() {
-		
+		$("#contacts_all").append("<img src=\"img/loading.gif\" />");
 	    navigator.contacts.find(["*"], function(contacts) {
 	    
 	        //alert("contacts.length = " + contacts.length);
