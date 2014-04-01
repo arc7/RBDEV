@@ -10,7 +10,7 @@ function onDeviceReady() {
 remainingPosts = 0;
 
 function processQueue(count) {
-	$("#debug").text()="";
+	$("#debug").empty();
 	//if(count) {
 		remainingPosts = count;
 	/*}
@@ -118,7 +118,7 @@ function displayMatchingContacts(contacts) {
 }
 
 function viewJSON() {
-	$("#debug").text()="";
+	$("#debug").empty();
 	queueJSON = getStorageVal("queueJSON");
 	if(queueJSON) {
 		$("#debug").append("Etat de la queue JSON : " + queueJSON + "<br />");
