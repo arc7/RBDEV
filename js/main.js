@@ -75,7 +75,7 @@ function clearPhoneNumber() {
 
 function jsonError(response) {
 	if (response) console.log(JSON.stringify(response));
-    console.error("Erreur");
+    //console.error("Erreur");
     //alert("Erreur : " + JSON.stringify(response));
     $("#debug").append("Erreur : " + JSON.stringify(response) + "<br />");
     console.log('Not working!');                  
