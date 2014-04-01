@@ -119,13 +119,14 @@ function displayMatchingContacts(contacts) {
 	$.each(contacts.data.matched, function(index, value) {
 		//$("#contact" + value).addClass("contactUser");
 		$("#contact" + value).appendTo("#contacts_toInvite");
-		$("#contact" + value).append("<button onclick=\"followContact(" + value + ")\">Follow</button><br />");
+		$("#contact" + value).append("<button class=\"follow" + value + "\" onclick=\"followContact(" + value + ")\">Follow</button><br />");
 	});
 }
 
 function followContact(id) {
 	storeJSON("contactFollow", id);
 	$("#contact" + id).appendTo("#contacts_already");
+	$(".follow" + id).remove();
 }
 
 function viewJSON() {
@@ -163,7 +164,7 @@ function postJson() {
 				jsonTosend = "data="+JSON.stringify(obj);
 				//jsonTosend = JSON.stringify(obj);
 				//alert(jsonTosend);
-				$("#debug").append(jsonTosend + "<br />");
+				//$("#debug").append(jsonTosend + "<br />");
 				console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
 				urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
@@ -187,7 +188,7 @@ function postJson() {
 						$("#debug").append("Good : "+JSON.stringify(response) + "<br />");
 
 						queueJSON.shift();
-						$("#debug").append(JSON.stringify(queueJSON) + "<br />");
+						//$("#debug").append(JSON.stringify(queueJSON) + "<br />");
 						setStorageVal("queueJSON", JSON.stringify(queueJSON));
 						
 						//removeStorageVal("queueJSON");

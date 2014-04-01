@@ -7,19 +7,17 @@ function onError(contactError) {
 	alert('onError!');
 }
 
-function getMatchingString(contact) {
-	phoneNumber = contact.phoneNumbers[0].value.replace(/[\s\.()]+/g,"").replace(/\+/g,"00");
-	name = contact.name.familyName;
-	// Combine les six derniers chiffres du numéro de téléphone avec les deux premiers caractères du nom
-	string = phoneNumber.substr(phoneNumber.length-6) + name.substr(0, 2);
-	return string;
-}
+/*tab["é"] = "e";
+tab["è"] = "e";
+tab["ê"] = "e";
+tab["à"] = "a";*/
 
-	function postContacts() {
-		$("#contacts_all").append("<img src=\"img/loading.gif\" />");
-	    navigator.contacts.find(["*"], function(contacts) {
-	    
-	        //alert("contacts.length = " + contacts.length);
+
+function postContacts() {
+	$("#contacts_all").append("<img src=\"img/loading.gif\" />");
+	navigator.contacts.find(["*"], function(contacts) {
+    
+		//alert("contacts.length = " + contacts.length);
 		$("#debug").append("Contacts.length = " + contacts.length + "<br />");
 		    
 		//contacts_filtre=[];
@@ -103,9 +101,9 @@ function getMatchingString(contact) {
 			processQueue(queueJSON.length);
 		}
 	        
-	    }, onError, {"multiple": true});   
+	}, onError, {"multiple": true});   
 	     
-	} 
+} 
 		
 	
 
