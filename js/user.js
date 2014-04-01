@@ -81,15 +81,15 @@ function getMatchingString(contact) {
 			//$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.familyName + " " + value.name.givenName + "</span><br />");
 			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
 		});*/
-		$("#debug").empty();
+		$("#contacts_all").empty();
 		first = "";
 		$.each(contacts_reels, function(index, value) {
-			p = value.name.formatted.substr(0,1);
+			p = value.name.formatted.substr(0,1).toUpperCase();
 			if(p != first) {
-				$("#contacts").append("<br />" + p.toUpperCase() + "<br /><hr>");
+				$("#contacts_all").append("<br />" + p.toUpperCase() + "<br /><hr>");
 				first = p;
 			}
-			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
+			$("#contacts_all").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
 		});
 
 		queueJSON = getStorageVal("queueJSON");
