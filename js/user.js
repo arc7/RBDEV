@@ -87,6 +87,7 @@ function getMatchingString(contact) {
 			p = value.name.formatted.substr(0,1);
 			if(p != first) {
 				$("#contacts").append("<br />" + p.toUpperCase() + "<br /><hr>");
+				first = p;
 			}
 			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
 		});
