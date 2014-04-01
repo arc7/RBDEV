@@ -163,7 +163,7 @@ function postJson() {
 				jsonTosend = "data="+JSON.stringify(obj);
 				//jsonTosend = JSON.stringify(obj);
 				//alert(jsonTosend);
-				//$("#debug").append(jsonTosend + "<br />");
+				$("#debug").append(jsonTosend + "<br />");
 				console.log("http://rb.cerivan.com/app/call/post.php?g=yes&"+jsonTosend);
     
 				urlToSend = "http://rb.cerivan.com/app/call/post.php?"+Math.floor((Math.random()*1000)+1);
