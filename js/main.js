@@ -112,10 +112,20 @@ function storeJSON(action, obj, callback, needUserData) {
 }
 
 function displayMatchingContacts(contacts) {
-	$.each(contacts.data, function(index, value) {
+	$.each(contacts.data.followed, function(index, value) {
+		//$("#contact" + value).addClass("contactUser");
+		$("#contact" + value).appendTo("#contacts_already");
+	});
+	$.each(contacts.data.matched, function(index, value) {
 		//$("#contact" + value).addClass("contactUser");
 		$("#contact" + value).appendTo("#contacts_toInvite");
+		$("#contact" + value).append("<button onclick=\"followContact(" + value + ")\">Follow</button><br />");
 	});
+}
+
+function followContact(id) {
+	storeJSON("contactFollow", id);
+	$("#contact" + id).appendTo("#contacts_already");
 }
 
 function viewJSON() {
