@@ -107,7 +107,7 @@ function preFetchData() {
 }
 
 function logout() {
-  FB.logout(function(response) {
-    window.location.reload();
-  });
+	FB.logout(function(response) {
+		window.location.reload();
+	});
 }
