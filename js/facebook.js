@@ -8,61 +8,59 @@ function authUser() {
 
 // Handle status changes
 function handleStatusChange(session) {
-    console.log('Got the user\'s session: ' + JSON.stringify(session));
+	console.log('Got the user\'s session: ' + JSON.stringify(session));
     
-    if (session.authResponse) {
-        //document.body.className = 'connected';
+	if (session.authResponse) {
+		//document.body.className = 'connected';
         
-        //Fetch user's id, name, and picture
-        FB.api('/me', {
-          fields: 'name, picture'
-        },
-        function(response) {
-          if (!response.error) {
-            document.body.className = 'connected';
+		//Fetch user's id, name, and picture
+		FB.api('/me', {
+			fields: 'name, picture'
+		},
+		function(response) {
+			if (!response.error) {
+				document.body.className = 'connected';
 
-            user = response;
+				user = response;
             
-            console.log('Got the user\'s name and picture: ' + JSON.stringify(response));
+				console.log('Got the user\'s name and picture: ' + JSON.stringify(response));
             
-            //Update display of user name and picture
-            if (document.getElementById('user-name')) {
-              document.getElementById('user-name').innerHTML = user.name;
-            }
-            if (document.getElementById('user-picture')) {
-              document.getElementById('user-picture').src = user.picture.data.url;
-            }
-          } else {
-            document.body.className = 'not_connected';
-            console.log('Error getting user info: ' + JSON.stringify(response.error));
-            // Check for errors due to app being unininstalled
-            if (response.error.error_subcode && response.error.error_subcode == "458") {
-              setTimeout(function() {
-                alert("The app was removed. Please log in again.");
-              }, 0);              
-            }
-            logout();         
-          }
+				//Update display of user name and picture
+				if (document.getElementById('user-name')) {
+					document.getElementById('user-name').innerHTML = user.name;
+				}
+				if (document.getElementById('user-picture')) {
+					document.getElementById('user-picture').src = user.picture.data.url;
+				}
+			} else {
+				document.body.className = 'not_connected';
+				console.log('Error getting user info: ' + JSON.stringify(response.error));
+				// Check for errors due to app being unininstalled
+				if (response.error.error_subcode && response.error.error_subcode == "458") {
+					setTimeout(function() {
+						alert("The app was removed. Please log in again.");
+					}, 0);              
+				}
+				logout();         
+			}
           
-          clearAction();
-        });
-    }
-    else  {
-      document.body.className = 'not_connected';
+		//clearAction();
+		});
+	}
+	else  {
+		document.body.className = 'not_connected';
     
-      clearAction();
-    }
+		clearAction();
+	}
 }
 
 function updateAuthElements() {
-  FB.Event.subscribe('auth.statusChange', function(session) {
-    if (session.authResponse) { 
-      //The user is logged in, so let's pre-fetch some data and check the current 
-      //permissions to show/hide the proper elements.
-      preFetchData();
-      checkUserPermissions();
-    }
-  });
+	FB.Event.subscribe('auth.statusChange', function(session) {
+		if (session.authResponse) {
+			preFetchData();
+			//checkUserPermissions();
+		}
+	});
 }
 
 
@@ -106,4 +104,10 @@ function preFetchData() {
 			alert('Got friends that are not using the app yet: ', nonAppFriendIDs);
 		});
 	});
+}
+
+function logout() {
+  FB.logout(function(response) {
+    window.location.reload();
+  });
 }
