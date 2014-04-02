@@ -5,6 +5,17 @@ function onDeviceReady() {
 	getCurrentUser();
 	getPhoneNumber();
 	$("#debug").toggle(false);
+	
+	FB.init({
+		appId: 'appid',
+		nativeInterface: CDV.FB,
+		useCachedDialogs: false
+	});
+      
+	FB.getLoginStatus(handleStatusChange);
+      
+	authUser();
+	updateAuthElements();
 	//setInterval(function(){postJSON()},60000);
 }
 
