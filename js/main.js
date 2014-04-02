@@ -7,7 +7,7 @@ function onDeviceReady() {
 	$("#debug").toggle(false);
 	
 	FB.init({
-		appId: 'appid',
+		appId: '1378180769129155',
 		nativeInterface: CDV.FB,
 		useCachedDialogs: false
 	});
