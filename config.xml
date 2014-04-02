@@ -52,6 +52,7 @@
 		<param name="APP_NAME" value="RestauBook" />
 	</gap:plugin>
 
+	<access origin="*" />
 
 
 </widget>
