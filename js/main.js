@@ -4,6 +4,7 @@ function onDeviceReady() {
     // Now safe to use device APIs
 	getCurrentUser();
 	getPhoneNumber();
+	$("#debug").toggle(false);
 	//setInterval(function(){postJSON()},60000);
 }
 
@@ -135,6 +136,10 @@ function viewJSON() {
 	if(queueJSON) {
 		$("#debug").append("Etat de la queue JSON : " + queueJSON + "<br />");
 	}
+}
+
+function toggleJSON() {
+	$("#debug").toggle();
 }
 
 //function postJson(action, obj, callback, needUserData) {
