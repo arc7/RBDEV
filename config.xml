@@ -49,7 +49,7 @@
 	<gap:plugin name="com.simonmacdonald.telephonenumber" />
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
 		<param name="APP_ID" value="1378180769129155" />
-		<param name="APP_NAME" value="RestauBook" />
+		<param name="APP_NAME" value="Restau-dev" />
 	</gap:plugin>
 
 	<access origin="*" />
