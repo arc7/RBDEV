@@ -15,16 +15,16 @@ function handleStatusChange(session) {
         
 		//Fetch user's id, name, and picture
 		FB.api('/me', {
-			fields: 'name, picture'
-		},
-		function(response) {
+				fields: 'name, picture'
+			},
+			function(response) {
 			if (!response.error) {
 				document.body.className = 'connected';
 
 				user = response;
-            
+
 				console.log('Got the user\'s name and picture: ' + JSON.stringify(response));
-            
+
 				//Update display of user name and picture
 				if (document.getElementById('user-name')) {
 					document.getElementById('user-name').innerHTML = user.name;
@@ -43,14 +43,14 @@ function handleStatusChange(session) {
 				}
 				logout();         
 			}
-          
+
 		//clearAction();
 		});
 	}
 	else  {
 		document.body.className = 'not_connected';
     
-		clearAction();
+		//clearAction();
 	}
 }
 
