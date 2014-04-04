@@ -3,7 +3,7 @@ function facebookLogin() {
 }
 
 function authUser() {
-  FB.Event.subscribe('auth.statusChange', handleStatusChange);
+	FB.Event.subscribe('auth.statusChange', handleStatusChange);
 }
 
 // Handle status changes

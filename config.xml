@@ -51,6 +51,7 @@
 		<param name="APP_ID" value="1378180769129155" />
 		<param name="APP_NAME" value="Restau-dev" />
 	</gap:plugin>
+	<gap:plugin name="com.phonegap.plugins.childbrowser" />
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
 	<access origin="*" />

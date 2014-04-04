@@ -6,16 +6,34 @@ function onDeviceReady() {
 	getPhoneNumber();
 	$("#debug").toggle(false);
 	
+	//Facebook
 	FB.init({
 		appId: '1378180769129155',
 		nativeInterface: CDV.FB,
 		useCachedDialogs: false
 	});
-      
 	FB.getLoginStatus(handleStatusChange);
-      
 	authUser();
 	updateAuthElements();
+	
+	//Twitter
+	var root = this;
+	cb = window.plugins.childBrowser;
+	if(!localStorage.getItem(twitterKey)){
+		$("#loginBtn").show();
+		$("#logoutBtn").hide();
+	}
+	else {
+		$("#loginBtn").hide();
+		$("#logoutBtn").show();
+	}
+                     
+	if (cb != null) {
+		cb.onLocationChange = function(loc){ root.locChanged(loc); };
+		cb.onClose = function(){root.onCloseBrowser()};
+		cb.onOpenExternal = function(){root.onOpenExternal();};
+	}
+	
 	//setInterval(function(){postJSON()},60000);
 }
 
