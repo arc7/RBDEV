@@ -14,7 +14,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/facebook.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/telephonenumber.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/local-notification.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/telephonenumber.js"></script>
 	<script src="cdv-plugin-fb-connect.js"></script>
 	<script src="facebook-js-sdk.js"></script> 
 	<link href="css/rb.css" rel="stylesheet" type="text/css" />
