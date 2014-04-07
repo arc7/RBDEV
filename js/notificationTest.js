@@ -6,6 +6,6 @@ function notification(){
 	title: 'Restaubook',
 	message: 'Test notification',
 	repeat: 'weekly',
-	autoCancel: true;
+	autoCancel: true
 	});
 }
