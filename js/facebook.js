@@ -9,47 +9,52 @@ function authUser() {
 // Handle status changes
 function handleStatusChange(session) {
 	console.log('Got the user\'s session: ' + JSON.stringify(session));
-    
+
 	if (session.authResponse) {
 		//document.body.className = 'connected';
-        
+		
+		$("#debug").append("Facebook login successful<br />");
+		
 		//Fetch user's id, name, and picture
 		FB.api('/me', {
 				fields: 'name, picture'
 			},
 			function(response) {
 			if (!response.error) {
-				document.body.className = 'connected';
+				//document.body.className = 'connected';
 
 				user = response;
 
-				console.log('Got the user\'s name and picture: ' + JSON.stringify(response));
+				//console.log('Got the user\'s name and picture: ' + JSON.stringify(response));
+				$("#debug").append("Got the user's name and picture: " + JSON.stringify(response) + "<br />");
 
 				//Update display of user name and picture
-				if (document.getElementById('user-name')) {
+				/*if (document.getElementById('user-name')) {
 					document.getElementById('user-name').innerHTML = user.name;
 				}
 				if (document.getElementById('user-picture')) {
 					document.getElementById('user-picture').src = user.picture.data.url;
-				}
+				}*/
 			} else {
-				document.body.className = 'not_connected';
-				console.log('Error getting user info: ' + JSON.stringify(response.error));
+				//document.body.className = 'not_connected';
+				//console.log('Error getting user info: ' + JSON.stringify(response.error));
+				$("#debug").append("Error getting user info: " + JSON.stringify(response.error) + "<br />");
 				// Check for errors due to app being unininstalled
 				if (response.error.error_subcode && response.error.error_subcode == "458") {
 					setTimeout(function() {
-						alert("The app was removed. Please log in again.");
-					}, 0);              
+						//alert("The app was removed. Please log in again.");
+						$("#debug").append("The app was removed. Please log in again.<br />");
+					}, 0);
 				}
-				logout();         
+				logout();
 			}
 
 		//clearAction();
 		});
 	}
 	else  {
-		document.body.className = 'not_connected';
-    
+		//document.body.className = 'not_connected';
+		$("#debug").append("Facebook login failure<br />");
 		//clearAction();
 	}
 }
@@ -57,7 +62,7 @@ function handleStatusChange(session) {
 function updateAuthElements() {
 	FB.Event.subscribe('auth.statusChange', function(session) {
 		if (session.authResponse) {
-			preFetchData();
+			//preFetchData();
 			//checkUserPermissions();
 		}
 	});

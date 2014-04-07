@@ -3,8 +3,8 @@ function notification(){
 
 	window.plugin.notification.local.add({
 	id: 1,
-	title: 'Reminder',
-	message: 'Dont forget to buy some flowers.',
+	title: 'Restaubook',
+	message: 'Test notification.',
 	repeat: 'weekly',
 	autoCancel: true;
 	});
