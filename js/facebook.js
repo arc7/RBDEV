@@ -8,7 +8,8 @@ function authUser() {
 
 // Handle status changes
 function handleStatusChange(session) {
-	console.log('Got the user\'s session: ' + JSON.stringify(session));
+	//console.log('Got the user\'s session: ' + JSON.stringify(session));
+	$("#debug").append("Got the user's session: " + JSON.stringify(session) + "<br />");
 
 	if (session.authResponse) {
 		//document.body.className = 'connected';
