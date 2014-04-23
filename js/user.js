@@ -14,11 +14,11 @@ tab["à"] = "a";*/
 
 
 function postContacts() {
-	$("#contacts_all").append("<img src=\"img/loading.gif\" />");
+	$("#menu_followings").append("<img src=\"img/loading.gif\" />");
 	navigator.contacts.find(["*"], function(contacts) {
     
 		//alert("contacts.length = " + contacts.length);
-		$("#debug").append("Contacts.length = " + contacts.length + "<br />");
+		//$("#debug").append("Contacts.length = " + contacts.length + "<br />");
 		    
 		//contacts_filtre=[];
 		contacts_corrects = 0;
@@ -63,7 +63,7 @@ function postContacts() {
 		contacts_corrects += contacts_filtre.length;
 		//alert(JSON.stringify(contacts_filtre));
 		//alert("Contacts réels : "+contacts_corrects);
-		$("#debug").append("Contacts réels : " + contacts_corrects + "<br />");
+		//$("#debug").append("Contacts réels : " + contacts_corrects + "<br />");
 		
 		storeJSON("getContactsMatch", new Object, "displayMatchingContacts");
 		
@@ -79,20 +79,21 @@ function postContacts() {
 			//$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.familyName + " " + value.name.givenName + "</span><br />");
 			$("#contacts").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
 		});*/
-		$("#contacts_already").empty();
+		/*$("#contacts_already").empty();
 		$("#contacts_toInvite").empty();
 		$("#contacts_all").empty();
 		$("#contacts_already").append("Contacts suivis : <br/>");
 		$("#contacts_toInvite").append("Contacts à inviter : <br/>");
-		$("#contacts_all").append("Tous les contacts : <br/>");
+		$("#contacts_all").append("Tous les contacts : <br/>");*/
 		first = "";
 		$.each(contacts_reels, function(index, value) {
 			p = value.name.formatted.substr(0,1).toUpperCase();
 			if(p != first) {
-				$("#contacts_all").append("<br />" + p.toUpperCase() + "<br /><hr>");
+				$("#menu_followings").append("<br />" + p.toUpperCase() + "<br /><hr>");
 				first = p;
 			}
-			$("#contacts_all").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
+			//$("#contacts_all").append("<span id=\"contact" + value.id + "\">" + value.name.formatted + "</span><br />");
+			$("#menu_followings").append("<li data_userid=\"userid_" + value.id + "\" data-type=\"user_follow\"><p>" + value.name.formatted + "<span>" + value.id + "</span></p>15.6<p></p></li>");
 		});
 
 		queueJSON = getStorageVal("queueJSON");

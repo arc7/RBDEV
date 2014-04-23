@@ -6,7 +6,9 @@ function onDeviceReady() {
 	getPhoneNumber();
 	$("#debug").toggle(false);
 	
-	//Facebook
+	setTimeout(function(){postContacts()}, 2000);
+	
+	/*//Facebook
 	FB.init({
 		appId: '1378180769129155',
 		nativeInterface: CDV.FB,
@@ -32,7 +34,7 @@ function onDeviceReady() {
 		cb.onLocationChange = function(loc){ root.locChanged(loc); };
 		cb.onClose = function(){root.onCloseBrowser()};
 		cb.onOpenExternal = function(){root.onOpenExternal();};
-	}
+	}*/
 	
 	//setInterval(function(){postJSON()},60000);
 }
@@ -144,19 +146,23 @@ function storeJSON(action, obj, callback, needUserData) {
 function displayMatchingContacts(contacts) {
 	$.each(contacts.data.followed, function(index, value) {
 		//$("#contact" + value).addClass("contactUser");
-		$("#contact" + value).appendTo("#contacts_already");
+		//$("#contact" + value).appendTo("#contacts_already");
+		$("[data_userid='userid_" + value + "']").appendTo("#menu_followers");
+		$("[data_userid='userid_" + value + "']").html().replace(/data-type="\w+"/g, "data-type=\"user_unfollow\"");
 	});
 	$.each(contacts.data.matched, function(index, value) {
 		//$("#contact" + value).addClass("contactUser");
-		$("#contact" + value).appendTo("#contacts_toInvite");
-		$("#contact" + value).append("<button class=\"follow" + value + "\" onclick=\"followContact(" + value + ")\">Follow</button><br />");
+		//$("#contact" + value).appendTo("#contacts_toInvite");
+		$("[data_userid='userid_" + value + "']").appendTo("#menu_followings");
+		$("[data_userid='userid_" + value + "']").html().replace(/data-type="\w+"/g, "data-type=\"user_follow\"");
+		//$("#userid_" + value).append("<button class=\"follow" + value + "\" onclick=\"followContact(" + value + ")\">Follow</button><br />");
 	});
 }
 
 function followContact(id) {
 	storeJSON("contactFollow", id);
-	$("#contact" + id).appendTo("#contacts_already");
-	$(".follow" + id).remove();
+	$("[data_userid='userid_" + id + "']").appendTo("#menu_followers");
+	//$(".follow" + id).remove();
 }
 
 function viewJSON() {
