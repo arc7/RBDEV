@@ -12,6 +12,14 @@ function getCurrentLocation() {
 		},
 		function(error) {
 			$("#debug").append("Can't get current position<br />");
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+				function(FS) {
+					downloadMap(48.844077, 2.3737547, 10, FS);
+				},
+				function(error) {
+					$("#debug").append("Can't get filesystem<br />");
+				}
+			);
 		},
 		{ enableHighAccuracy: true }
 	);
