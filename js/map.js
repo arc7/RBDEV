@@ -39,7 +39,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
 				function(entry) {
-			
+					$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + "<br />");
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
