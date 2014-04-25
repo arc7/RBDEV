@@ -36,28 +36,28 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	var x2tile = long2tile(lon-rayon*((1/Math.cos(lat))/111.12), 15);
 	var y2tile = lat2tile(lat-rayon*0.00899928005759539236861051115911, 15);
 	
-	$("$debug").append("Starting map download ...<br />");
+	$("#debug").append("Starting map download ...<br />");
 	
 	var fileTransfer = new FileTransfer();
 	for(var i=x2tile; i<=2*xtile-x2tile; i++) {
 		for(var j=2*ytile-y2tile; j<=y2tile; j++) {
 			setTimeout(fileTransfer.download(
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
-				fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
+				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 				function(entry) {
 					$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server a<br />");
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
 						"http://b.tile.openstreetmap.org/15/"+i+"/"+j+".png",
-						fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
+						fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 						function(entry) {
 							$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server b<br />");
 						},
 						function(error) {
 							setTimeout(fileTransfer.download(
 								"http://c.tile.openstreetmap.org/15/"+i+"/"+j+".png",
-								fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
+								fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 								function(entry) {
 									$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server c<br />");
 								},
