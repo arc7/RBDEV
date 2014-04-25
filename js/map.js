@@ -1,8 +1,11 @@
 function getCurrentLocation() {
+	$("#debug").append("Getting current location ...<br />"); 
 	navigator.geolocation.getCurrentPosition(
 		function(position) {
+			$("#debug").append("Current location : " + position.coords.latitude + ", " + position.coords.longitude + "<br />");
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 				function(FS) {
+					$("#debug").append("Root path : " + fileSystem.root.fullPath + "<br />");
 					downloadMap(position.coords.latitude, position.coords.longitude, 10, FS);
 				},
 				function(error) {
@@ -11,9 +14,10 @@ function getCurrentLocation() {
 			);
 		},
 		function(error) {
-			$("#debug").append("Can't get current position<br />");
+			$("#debug").append("Can't get current location<br />");
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 				function(FS) {
+					$("#debug").append("Root path : " + fileSystem.root.fullPath + "<br />");
 					downloadMap(48.844077, 2.3737547, 10, FS);
 				},
 				function(error) {
@@ -21,7 +25,7 @@ function getCurrentLocation() {
 				}
 			);
 		},
-		{ enableHighAccuracy: false }
+		{ enableHighAccuracy: true }
 	);
 }
 
@@ -41,21 +45,21 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
 				function(entry) {
-					$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + "<br />");
+					$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server a<br />");
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
 						"http://b.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 						fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
 						function(entry) {
-							$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + "<br />");
+							$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server b<br />");
 						},
 						function(error) {
 							setTimeout(fileTransfer.download(
 								"http://c.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 								fileSystem.root.fullPath+"/openstreetmap/15/"+i+"/"+j+".png",
 								function(entry) {
-									$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + "<br />");
+									$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server c<br />");
 								},
 								function(error) {
 									$("#debug").append("Can't get tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + "<br />");
