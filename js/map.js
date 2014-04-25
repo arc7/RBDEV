@@ -5,7 +5,7 @@ function getCurrentLocation() {
 			$("#debug").append("Current location : " + position.coords.latitude + ", " + position.coords.longitude + "<br />");
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 				function(FS) {
-					$("#debug").append("Root path : " + fileSystem.root.fullPath + "<br />");
+					$("#debug").append("Root path : " + FS.root.fullPath + "<br />");
 					downloadMap(position.coords.latitude, position.coords.longitude, 10, FS);
 				},
 				function(error) {
@@ -17,7 +17,7 @@ function getCurrentLocation() {
 			$("#debug").append("Can't get current location<br />");
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 				function(FS) {
-					$("#debug").append("Root path : " + fileSystem.root.fullPath + "<br />");
+					$("#debug").append("Root path : " + FS.root.fullPath + "<br />");
 					downloadMap(48.844077, 2.3737547, 10, FS);
 				},
 				function(error) {
