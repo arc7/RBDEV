@@ -38,6 +38,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	
 	$("#debug").append("Starting map download ...<br />");
 	
+	var tile = 1;
 	var fileTransfer = new FileTransfer();
 	for(var i=x2tile; i<=2*xtile-x2tile; i++) {
 		for(var j=2*ytile-y2tile; j<=y2tile; j++) {
@@ -45,30 +46,31 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 				function(entry) {
-					$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server a<br />");
+					$("#debug").append("Downloaded tile " + tile + " of " + (2*x2tile+1)*(2*y2tile+1) + " from server a<br />");
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
 						"http://b.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 						fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 						function(entry) {
-							$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server b<br />");
+							$("#debug").append("Downloaded tile " + tile + " of " + (2*x2tile+1)*(2*y2tile+1) + " from server b<br />");
 						},
 						function(error) {
 							setTimeout(fileTransfer.download(
 								"http://c.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 								fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 								function(entry) {
-									$("#debug").append("Downloaded tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + " from server c<br />");
+									$("#debug").append("Downloaded tile " + tile + " of " + (2*x2tile+1)*(2*y2tile+1) + " from server c<br />");
 								},
 								function(error) {
-									$("#debug").append("Can't get tile " + (i-x2tile+1)+(j-(2*ytile-y2tile)+1)*(2*xtile+1) + " of " + (2*xtile+1)*(2*ytile+1) + "<br />");
+									$("#debug").append("Can't get tile " + tile + " of " + (2*x2tile+1)*(2*y2tile+1) + "<br />");
 								}
 							), 500);
 						}
 					), 500);
 				}
-			), 500);
+			), 500+i*j/1000000);
+			tile++;
 		}
 	}
 }
