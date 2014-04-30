@@ -39,7 +39,12 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	$("#debug").append("Starting map download ...<br />");
 	
 	var tile = 1;
-	var fileTransfer = new FileTransfer();
+	try {
+		var fileTransfer = new FileTransfer();
+	}
+	catch (e) {
+		alert("Error : "+e);
+	}
 	for(var i=x2tile; i<=2*xtile-x2tile; i++) {
 		for(var j=2*ytile-y2tile; j<=y2tile; j++) {
 			setTimeout(fileTransfer.download(
