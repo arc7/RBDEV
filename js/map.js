@@ -43,7 +43,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 		var fileTransfer = new FileTransfer();
 	}
 	catch (e) {
-		alert("Error : "+e);
+		$("#debug").append("Error : " + e + "<br />");
 	}
 	for(var i=x2tile; i<=2*xtile-x2tile; i++) {
 		for(var j=2*ytile-y2tile; j<=y2tile; j++) {
