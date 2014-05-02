@@ -47,6 +47,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	}
 	for(var i=x2tile; i<=2*xtile-x2tile; i++) {
 		for(var j=2*ytile-y2tile; j<=y2tile; j++) {
+			$("#debug").append("i = " + i + "; j = " + j + "<br />");
 			setTimeout(fileTransfer.download(
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
