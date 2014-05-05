@@ -1,5 +1,5 @@
 function getCurrentLocation() {
-	$("#debug").append("Getting current location ...<br />"); 
+	/*$("#debug").append("Getting current location ...<br />"); 
 	navigator.geolocation.getCurrentPosition(
 		function(position) {
 			$("#debug").append("Current location : " + position.coords.latitude + ", " + position.coords.longitude + "<br />");
@@ -14,7 +14,7 @@ function getCurrentLocation() {
 			);
 		},
 		function(error) {
-			$("#debug").append("Can't get current location<br />");
+			$("#debug").append("Can't get current location<br />");*/
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
 				function(FS) {
 					$("#debug").append("Root path : " + FS.root.fullPath + "<br />");
@@ -24,9 +24,9 @@ function getCurrentLocation() {
 					$("#debug").append("Can't get filesystem<br />");
 				}
 			);
-		},
+		/*},
 		{ enableHighAccuracy: true }
-	);
+	);*/
 }
 
 function downloadMap(lat, lon, rayon, fileSystem) {
