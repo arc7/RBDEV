@@ -46,10 +46,11 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	$("#debug").append("ytile = " + ytile + "; y2tile = " + y2tile + "<br />");
 	for(x = x2tile; x <= 2*xtile-x2tile; x++) {
 		for(y = 2*ytile-y2tile; y <= y2tile; y++) {
-			$("#debug").append("i = " + i + "; j = " + j + "<br />");
 			var i = x;
 			var j = y;
-			setTimeout(fileTransfer.download(
+			$("#debug").append("i = " + i + "; j = " + j + "<br />");
+			setTimeout(downloadTile(i, j, fileSystem), 500+tile*100);
+			/*setTimeout(fileTransfer.download(
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
 				function(entry) {
@@ -76,10 +77,41 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 						}
 					), 500);
 				}
-			), 500+i*j/1000000);
+			), 500+i*j/1000000);*/
 			tile++;
 		}
 	}
+}
+
+function downloadTile(tileX, tileY, fileSystem) {
+	fileTransfer.download(
+		"http://a.tile.openstreetmap.org/15/"+tileX+"/"+j+".png",
+		fileSystem.root.fullPath+"openstreetmap/15/"+tileX+"/"+j+".png",
+		function(entry) {
+			$("#debug").append("Downloaded tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server a<br />");
+		},
+		function(error) {
+			setTimeout(fileTransfer.download(
+				"http://b.tile.openstreetmap.org/15/"+tileX+"/"+j+".png",
+				fileSystem.root.fullPath+"openstreetmap/15/"+tileX+"/"+j+".png",
+				function(entry) {
+					$("#debug").append("Downloaded tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server b<br />");
+				},
+				function(error) {
+					setTimeout(fileTransfer.download(
+						"http://c.tile.openstreetmap.org/15/"+tileX+"/"+j+".png",
+						fileSystem.root.fullPath+"openstreetmap/15/"+tileX+"/"+j+".png",
+						function(entry) {
+							$("#debug").append("Downloaded tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server c<br />");
+						},
+						function(error) {
+							$("#debug").append("Can't get tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + "<br />");
+						}
+					), 500);
+				}
+			), 500);
+		}
+	);
 }
 
 function long2tile(lon,zoom) {
