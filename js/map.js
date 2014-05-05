@@ -39,7 +39,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	$("#debug").append("Starting map download ...<br />");
 	
 	var tile = 1;
-	var fileTransfer = new FileTransfer();
+	//var fileTransfer = new FileTransfer();
 	var x = 0;
 	var y = 0;
 	$("#debug").append("xtile = " + xtile + "; x2tile = " + x2tile + "<br />");
@@ -84,28 +84,29 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 }
 
 function downloadTile(tileX, tileY, fileSystem) {
+	var fileTransfer = new FileTransfer();
 	fileTransfer.download(
-		"http://a.tile.openstreetmap.org/15/"+tileX+"/"+j+".png",
-		fileSystem.root.fullPath+"openstreetmap/15/"+tileX+"/"+j+".png",
+		"http://a.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+		fileSystem.root.fullPath+"openstreetmap/15/" + tileX + "/" + tileY + ".png",
 		function(entry) {
-			$("#debug").append("Downloaded tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server a<br />");
+			$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server a<br />");
 		},
 		function(error) {
 			setTimeout(fileTransfer.download(
-				"http://b.tile.openstreetmap.org/15/"+tileX+"/"+j+".png",
-				fileSystem.root.fullPath+"openstreetmap/15/"+tileX+"/"+j+".png",
+				"http://b.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+				fileSystem.root.fullPath+"openstreetmap/15/" + tileX + "/" + tileY + ".png",
 				function(entry) {
-					$("#debug").append("Downloaded tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server b<br />");
+					$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server b<br />");
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
-						"http://c.tile.openstreetmap.org/15/"+tileX+"/"+j+".png",
-						fileSystem.root.fullPath+"openstreetmap/15/"+tileX+"/"+j+".png",
+						"http://c.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+						fileSystem.root.fullPath+"openstreetmap/15/" + tileX + "/" + tileY + ".png",
 						function(entry) {
-							$("#debug").append("Downloaded tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server c<br />");
+							$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server c<br />");
 						},
 						function(error) {
-							$("#debug").append("Can't get tile " + tileX + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + "<br />");
+							$("#debug").append("Can't get tile " + tileX + ":" + tileY + "<br />");
 						}
 					), 500);
 				}
