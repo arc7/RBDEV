@@ -39,7 +39,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	$("#debug").append("Starting map download ...<br />");
 	
 	var tile = 1;
-	var fileTransfer = new FileTransfer();
+	//var fileTransfer = new FileTransfer();
 	var i = 0;
 	var j = 0;
 	$("#debug").append("xtile = " + xtile + "; x2tile = " + x2tile + "<br />");
@@ -47,6 +47,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	for(i = x2tile; i <= 2*xtile-x2tile; i++) {
 		for(j = 2*ytile-y2tile; j <= y2tile; j++) {
 			$("#debug").append("i = " + i + "; j = " + j + "<br />");
+			var fileTransfer = new FileTransfer();
 			setTimeout(fileTransfer.download(
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
