@@ -107,6 +107,22 @@ function downloadTile(tileX, tileY, fileSystem) {
 						},
 						function(error) {
 							$("#debug").append("Can't get tile " + tileX + ":" + tileY + "<br />");
+							$("#debug").append("Error :");
+							if(error.code==FileTransferError.FILE_NOT_FOUND_ERR) {
+								$("#debug").append("&nbsp;&nbsp;Code = FILE NOT FOUND");
+							}
+							else if(error.code==FileTransferError.INVALID_URL_ERR) {
+								$("#debug").append("&nbsp;&nbsp;Code = INVALID URL");
+							}
+							else if(error.code==FileTransferError.CONNECTION_ERR) {
+								$("#debug").append("&nbsp;&nbsp;Code = CONNECTION");
+							}
+							else if(error.code==FileTransferError.ABORT_ERR) {
+								$("#debug").append("&nbsp;&nbsp;Code = ABORT");
+							}
+							$("#debug").append("&nbsp;&nbsp;Source = " + error.source);
+							$("#debug").append("&nbsp;&nbsp;Target = " + error.target);
+							$("#debug").append("&nbsp;&nbsp;HTTP_status = " + error.http_status);
 						}
 					), 500);
 				}
