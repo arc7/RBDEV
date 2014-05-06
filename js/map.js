@@ -38,7 +38,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 	
 	$("#debug").append("Starting map download ...<br />");
 	
-	var tile = 1;
+	/*var tile = 1;
 	//var fileTransfer = new FileTransfer();
 	var x = 0;
 	var y = 0;
@@ -50,40 +50,121 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 			var j = y;
 			$("#debug").append("i = " + i + "; j = " + j + "<br />");
 			setTimeout(downloadTile(i, j, fileSystem), tile*500);
-			/*setTimeout(fileTransfer.download(
-				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
-				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
+			tile++;
+		}
+	}*/
+	minTileX = x2tile;
+	minTileY = 2*ytile-y2tile;
+	maxTileX = 2*xtile-x2tile;
+	maxTileY = y2tile;
+	downloadTile(minTileX, minTileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+}
+
+function downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem) {
+	var fileTransfer = new FileTransfer();
+	fileTransfer.download(
+		"http://a.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+		fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
+		function(entry) {
+			$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server a<br />");
+			if(tileX < maxTileX) {
+				tileX += 1;
+				downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+			}
+			else {
+				if(tileY < maxTileY) {
+					tileY +=1;
+					tileX = minTileX;
+					downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+				}
+				else {
+					$("#debug").append("Map download finished ...<br />");
+				}
+			}
+		},
+		function(error) {
+			setTimeout(fileTransfer.download(
+				"http://b.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+				fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 				function(entry) {
-					$("#debug").append("Downloaded tile " + i + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server a<br />");
+					$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server b<br />");
+					if(tileX < maxTileX) {
+						tileX += 1;
+						downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+					}
+					else {
+						if(tileY < maxTileY) {
+							tileY +=1;
+							tileX = minTileX;
+							downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+						}
+						else {
+							$("#debug").append("Map download finished ...<br />");
+						}
+					}
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
-						"http://b.tile.openstreetmap.org/15/"+i+"/"+j+".png",
-						fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
+						"http://c.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+						fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 						function(entry) {
-							$("#debug").append("Downloaded tile " + i + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server b<br />");
+							$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server c<br />");
+							if(tileX < maxTileX) {
+								tileX += 1;
+								downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+							}
+							else {
+								if(tileY < maxTileY) {
+									tileY +=1;
+									tileX = minTileX;
+									downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+								}
+								else {
+									$("#debug").append("Map download finished ...<br />");
+								}
+							}
 						},
 						function(error) {
-							setTimeout(fileTransfer.download(
-								"http://c.tile.openstreetmap.org/15/"+i+"/"+j+".png",
-								fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
-								function(entry) {
-									$("#debug").append("Downloaded tile " + i + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + " from server c<br />");
-								},
-								function(error) {
-									$("#debug").append("Can't get tile " + i + ":" + j + " | " + tile + " of " + (2*(xtile-x2tile)+1)*(2*(y2tile-ytile)+1) + "<br />");
+							$("#debug").append("Can't get tile " + tileX + ":" + tileY + "<br />");
+							$("#debug").append("Error :");
+							if(error.code==FileTransferError.FILE_NOT_FOUND_ERR) {
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = FILE NOT FOUND<br />");
+							}
+							else if(error.code==FileTransferError.INVALID_URL_ERR) {
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = INVALID URL<br />");
+							}
+							else if(error.code==FileTransferError.CONNECTION_ERR) {
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = CONNECTION<br />");
+							}
+							else if(error.code==FileTransferError.ABORT_ERR) {
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = ABORT<br />");
+							}
+							$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Source = " + error.source + "<br />");
+							$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Target = " + error.target + "<br />");
+							$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;HTTP_status = " + error.http_status + "<br />");
+							if(tileX < maxTileX) {
+								tileX += 1;
+								downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
+							}
+							else {
+								if(tileY < maxTileY) {
+									tileY +=1;
+									tileX = minTileX;
+									downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem);
 								}
-							), 500);
+								else {
+									$("#debug").append("Map download finished ...<br />");
+								}
+							}
 						}
 					), 500);
 				}
-			), 500+i*j/1000000);*/
-			tile++;
+			), 500);
 		}
-	}
+	);
 }
 
-function downloadTile(tileX, tileY, fileSystem) {
+/*function downloadTile(tileX, tileY, fileSystem) {
 	var fileTransfer = new FileTransfer();
 	fileTransfer.download(
 		"http://a.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
@@ -129,7 +210,7 @@ function downloadTile(tileX, tileY, fileSystem) {
 			), 500);
 		}
 	);
-}
+}*/
 
 function long2tile(lon,zoom) {
 	return (Math.floor((lon+180)/360*Math.pow(2,zoom)));
