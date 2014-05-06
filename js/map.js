@@ -87,21 +87,21 @@ function downloadTile(tileX, tileY, fileSystem) {
 	var fileTransfer = new FileTransfer();
 	fileTransfer.download(
 		"http://a.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
-		fileSystem.root.fullPath+"openstreetmap/15/" + tileX + "/" + tileY + ".png",
+		fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 		function(entry) {
 			$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server a<br />");
 		},
 		function(error) {
 			setTimeout(fileTransfer.download(
 				"http://b.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
-				fileSystem.root.fullPath+"openstreetmap/15/" + tileX + "/" + tileY + ".png",
+				fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 				function(entry) {
 					$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server b<br />");
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
 						"http://c.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
-						fileSystem.root.fullPath+"openstreetmap/15/" + tileX + "/" + tileY + ".png",
+						fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 						function(entry) {
 							$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server c<br />");
 						},
