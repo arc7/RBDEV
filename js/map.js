@@ -49,7 +49,7 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 			var i = x;
 			var j = y;
 			$("#debug").append("i = " + i + "; j = " + j + "<br />");
-			setTimeout(downloadTile(i, j, fileSystem), 500+tile*100);
+			setTimeout(downloadTile(i, j, fileSystem), tile*500);
 			/*setTimeout(fileTransfer.download(
 				"http://a.tile.openstreetmap.org/15/"+i+"/"+j+".png",
 				fileSystem.root.fullPath+"openstreetmap/15/"+i+"/"+j+".png",
