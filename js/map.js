@@ -109,20 +109,20 @@ function downloadTile(tileX, tileY, fileSystem) {
 							$("#debug").append("Can't get tile " + tileX + ":" + tileY + "<br />");
 							$("#debug").append("Error :");
 							if(error.code==FileTransferError.FILE_NOT_FOUND_ERR) {
-								$("#debug").append("&nbsp;&nbsp;Code = FILE NOT FOUND");
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = FILE NOT FOUND<br />");
 							}
 							else if(error.code==FileTransferError.INVALID_URL_ERR) {
-								$("#debug").append("&nbsp;&nbsp;Code = INVALID URL");
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = INVALID URL<br />");
 							}
 							else if(error.code==FileTransferError.CONNECTION_ERR) {
-								$("#debug").append("&nbsp;&nbsp;Code = CONNECTION");
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = CONNECTION<br />");
 							}
 							else if(error.code==FileTransferError.ABORT_ERR) {
-								$("#debug").append("&nbsp;&nbsp;Code = ABORT");
+								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = ABORT<br />");
 							}
-							$("#debug").append("&nbsp;&nbsp;Source = " + error.source);
-							$("#debug").append("&nbsp;&nbsp;Target = " + error.target);
-							$("#debug").append("&nbsp;&nbsp;HTTP_status = " + error.http_status);
+							$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Source = " + error.source + "<br />");
+							$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Target = " + error.target + "<br />");
+							$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;HTTP_status = " + error.http_status + "<br />");
 						}
 					), 500);
 				}
