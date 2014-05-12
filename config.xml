@@ -55,7 +55,7 @@
 	<gap:plugin name="com.phonegap.plugins.childbrowser" />
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
-	<access origin="*" />
+	<access origin=".*" subdomains="true" />
 
 
 </widget>
