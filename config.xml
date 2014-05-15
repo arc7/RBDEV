@@ -34,6 +34,12 @@
 
 	<preference name="auto-hide-splash-screen" value="false" />
 	<preference name="load-url-timeout" value="30000" />
+	<feature name="File">
+    <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+</feature>
+<feature name="FileTransfer">
+    <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+</feature>
 
     
 	<gap:splash src="img/splash.jpg" />
@@ -46,7 +52,8 @@
 	<gap:plugin name="org.apache.cordova.core.network-information" /> 
 	<gap:plugin name="org.apache.cordova.core.vibration" />
 	<gap:plugin name="org.apache.cordova.core.file" />
-	<gap:plugin name="org.apache.cordova.core.file-transfer" />
+	<gap:plugin name="File" value="org.apache.cordova.core.FileUtils" />
+	<gap:plugin name="FileTransfer" value="org.apache.cordova.core.FileTransfer" />
 	<gap:plugin name="com.simonmacdonald.telephonenumber" />
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
 		<param name="APP_ID" value="1378180769129155" />
