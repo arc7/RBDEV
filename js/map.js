@@ -63,9 +63,9 @@ function downloadMap(lat, lon, rayon, fileSystem) {
 function downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, fileSystem) {
 	var fileTransfer = new FileTransfer();
 	fileTransfer.download(
-		"http://a.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+		encodeURI("http://a.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png"),
 		//fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
-		"file:///sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
+		"/sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 		function(entry) {
 			$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server a<br />");
 			if(tileX < maxTileX) {
@@ -85,9 +85,9 @@ function downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, file
 		},
 		function(error) {
 			setTimeout(fileTransfer.download(
-				"http://b.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+				encodeURI("http://b.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png"),
 				//fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
-				"file:///sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
+				"/sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 				function(entry) {
 					$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server b<br />");
 					if(tileX < maxTileX) {
@@ -107,9 +107,9 @@ function downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, file
 				},
 				function(error) {
 					setTimeout(fileTransfer.download(
-						"http://c.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png",
+						encodeURI("http://c.tile.openstreetmap.org/15/" + tileX + "/" + tileY + ".png"),
 						//fileSystem.root.fullPath+"sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
-						"file:///sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
+						"/sdcard/openstreetmap/15/" + tileX + "/" + tileY + ".png",
 						function(entry) {
 							$("#debug").append("Downloaded tile " + tileX + ":" + tileY + " from server c<br />");
 							if(tileX < maxTileX) {
@@ -129,7 +129,7 @@ function downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, file
 						},
 						function(error) {
 							$("#debug").append("Can't get tile " + tileX + ":" + tileY + "<br />");
-							$("#debug").append("Error :");
+							$("#debug").append("Error :<br />");
 							if(error.code==FileTransferError.FILE_NOT_FOUND_ERR) {
 								$("#debug").append("&nbsp;&nbsp;&nbsp;&nbsp;Code = FILE NOT FOUND<br />");
 							}
@@ -159,11 +159,14 @@ function downloadTile(tileX, tileY, minTileX, minTileY, maxTileX, maxTileY, file
 									$("#debug").append("Map download finished ...<br />");
 								}
 							}
-						}
+						},
+						true
 					), 500);
-				}
+				},
+				true
 			), 500);
-		}
+		},
+		true
 	);
 }
 
